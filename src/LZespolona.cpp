@@ -150,8 +150,43 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
 /*    stdout - operator strumienia wyjsciowego              */
 /*    Skl - wyswietlana liczba zespolona                    */
 /* Zwraca:                                                  */
-/*    brak                                                  */
+/*    wyswietlona odpowiednio liczbe zespolona Skl          */
 /************************************************************/
-ostream & operator << ( ostream & stdout , LZespolona Skl){
-  return stdout << Skl.re << showpos << Skl.im << noshowpos << 'i';
+ostream & operator << ( ostream & stdwyj , LZespolona Skl){
+  return stdwyj<<Skl.re<<showpos<<Skl.im<<noshowpos<<'i';
+}
+
+
+istream & operator >> ( istream & stdwej,  LZespolona & Skl){
+  char nawias, litera;
+  stdwej>>nawias;
+  if (stdwej.fail())
+    return stdwej;
+  if (nawias!='('){
+    stdwej.setstate(ios::failbit);
+    return stdwej;
+  }
+  stdwej>>Skl.re;
+  if (stdwej.fail())
+    return stdwej;
+  stdwej>>Skl.im;
+  if (stdwej.fail())
+    return stdwej;
+  stdwej>>litera;
+  if (stdwej.fail())
+    return stdwej;
+  if (litera!='i'){
+    stdwej.setstate(ios::failbit);
+    return stdwej;
+  }
+  stdwej>>nawias;
+  if (stdwej.fail())
+    return stdwej;
+  if(nawias!=')'){
+    stdwej.setstate(ios::failbit);
+    return stdwej;
+  }
+  return stdwej;
+
+  return stdwej;
 }

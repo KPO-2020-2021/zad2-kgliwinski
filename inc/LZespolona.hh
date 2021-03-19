@@ -48,4 +48,6 @@ LZespolona  operator / (LZespolona Skl1, LZespolona Skl2);
 
 ostream & operator << ( ostream & stdout , LZespolona Skl);
 
+istream & operator >> ( istream & stdin,  LZespolona & Skl);
+
 #endif

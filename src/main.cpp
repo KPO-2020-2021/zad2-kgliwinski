@@ -43,9 +43,10 @@ int main(int argc, char **argv)
   cout << " Koniec testu" << endl;
   cout << endl;
 
-  LZespolona L1, L2;
-  L1.re=1; L1.im=1; L2.re=0; L2.im=0;
+  LZespolona L1, L2,L3;
+  L1.re=0; L1.im=1; L2.re=0; L2.im=0;
 
   cout<<L1<<" "<<L2<<" "<<L1/L2<<endl;
-
+  cin>>L3;
+  cout<<endl<<L3<<endl<<L3.re<<" "<<L3.im<<endl;
 }
