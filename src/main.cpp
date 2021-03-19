@@ -45,5 +45,5 @@ int main(int argc, char **argv)
 
 WyrazenieZesp Wyrz;
 cin>>Wyrz;
-cout<<Wyrz<<endl;
+cout<<Oblicz(Wyrz)<<endl;
 }

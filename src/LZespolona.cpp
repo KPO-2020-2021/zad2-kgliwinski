@@ -138,7 +138,7 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
     return Wynik;
   }
   else{
-    cerr<<"Dzielenie liczb zespolonych nie powiodlo sie. W mianowniku jest liczba rowna 0: ";
+    cerr<<"Dzielenie liczb zespolonych nie powiodlo sie. W mianowniku jest liczba rowna 0: kwadrat modulu z liczby ";
     return Skl2;    //dzielenie przez zero zwroci komunikat bledu oraz mianownik dzielenia 
     
   }
