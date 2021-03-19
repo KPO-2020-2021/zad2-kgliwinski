@@ -147,7 +147,7 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
 /************************************************************/
 /* Definiuje w jaki sposob wyswietlac liczby zespolone      */
 /* Argumenty:                                               */
-/*    stdout - operator strumienia wyjsciowego              */
+/*    stdwyj - operator strumienia wyjsciowego              */
 /*    Skl - wyswietlana liczba zespolona                    */
 /* Zwraca:                                                  */
 /*    wyswietlona odpowiednio liczbe zespolona Skl          */
@@ -156,7 +156,14 @@ ostream & operator << ( ostream & stdwyj , LZespolona Skl){
   return stdwyj<<Skl.re<<showpos<<Skl.im<<noshowpos<<'i';
 }
 
-
+/************************************************************/
+/* Definiuje w jaki sposob wczytywac liczby zespolone       */
+/* Argumenty:                                               */
+/*    stdwej - operator strumienia wyjsciowego              */
+/*    Skl - wczytywana liczba zespolona                     */
+/* Zwraca:                                                  */
+/*    wczytana odpowiednio liczbe zespolona Skl             */
+/************************************************************/
 istream & operator >> ( istream & stdwej,  LZespolona & Skl){
   char nawias, litera;
   stdwej>>nawias;
@@ -188,5 +195,5 @@ istream & operator >> ( istream & stdwej,  LZespolona & Skl){
   }
   return stdwej;
 
-  return stdwej;
+
 }

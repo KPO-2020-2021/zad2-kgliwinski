@@ -2,9 +2,10 @@
 #define WYRAZENIEZESP_HH
 
 
-
+#include<iostream>
 #include "LZespolona.hh"
 
+using namespace std;
 
 /*!
  * Modeluje zbior operatorow arytmetycznych.
@@ -29,7 +30,14 @@ struct WyrazenieZesp {
  */
 
 
-void Wyswietl(WyrazenieZesp  WyrZ);
+ostream & operator << (ostream & stdwyj, WyrazenieZesp  WyrZ);
+
+Operator get_sym(char ope);
+
+char read_sym(Operator ope);
+
+istream & operator >> (istream & stdwe, WyrazenieZesp & WyrZ);
+
 LZespolona Oblicz(WyrazenieZesp  WyrZ);
 
 #endif
