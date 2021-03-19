@@ -36,7 +36,7 @@ Operator get_sym(char ope);
 
 char read_sym(Operator ope);
 
-istream & operator >> (istream & stdwe, WyrazenieZesp & WyrZ);
+istream & operator >> (istream & stdwej, WyrazenieZesp & WyrZ);
 
 LZespolona Oblicz(WyrazenieZesp  WyrZ);
 

@@ -43,11 +43,7 @@ int main(int argc, char **argv)
   cout << " Koniec testu" << endl;
   cout << endl;
 
-  LZespolona L1, L2;
-  WyrazenieZesp Wyrz;
-  L1.re=0; L1.im=1; L2.re=0; L2.im=0;
-
-Wyrz.Arg1=L1; Wyrz.Arg2=L2;
-
+WyrazenieZesp Wyrz;
+cin>>Wyrz;
 cout<<Wyrz<<endl;
 }

@@ -19,7 +19,13 @@ ostream &operator<<(ostream &stdwyj, WyrazenieZesp WyrZ)
     stdwyj<<'('<<WyrZ.Arg2.re<<showpos<<WyrZ.Arg2.im<<noshowpos<<'i'<<')';
     return stdwyj;
 }
-
+/************************************************************/
+/* Definiuje w jaki sposob wczytywac znak do operatora      */
+/* Argumenty:                                               */
+/*    ope - tablica znakow ze znakiem +,-,* lub /           */
+/* Zwraca:                                                  */
+/*    Operator oper                                         */
+/************************************************************/
 Operator get_sym(char ope)
 {
     Operator oper;
@@ -34,7 +40,7 @@ Operator get_sym(char ope)
             oper = Op_Mnoz;
             break;
         case '/':
-            oper=Op_Dziel;
+            oper = Op_Dziel;
             break;
         default:
             cerr<<"Bledny operator matematyczny";
@@ -42,7 +48,13 @@ Operator get_sym(char ope)
     }
     return oper;
 }
-
+/************************************************************/
+/* Definiuje w jaki sposob wyswietlac znak z operatora      */
+/* Argumenty:                                               */
+/*    ope - operator okreslajacy znak +,-,* lub /           */
+/* Zwraca:                                                  */
+/*    tablice znakow sym z symbolem +,-,*,/                 */
+/************************************************************/
 char read_sym(Operator ope){
     char sym;
     switch (ope){
@@ -65,8 +77,20 @@ char read_sym(Operator ope){
     }
     return sym;
 }
-
-istream &operator>>(istream &stdwe, WyrazenieZesp & WyrZ)
+/************************************************************/
+/* Definiuje w jaki sposob wczytywac wyrazenia zespolone    */
+/* Argumenty:                                               */
+/*    stdwej - operator strumienia wyjsciowego              */
+/*    WyrZ - wczytywane wyrazenie zespolone                 */
+/* Zwraca:                                                  */
+/*    wczytane odpowiednio wyrazenie zespolone WyrZ         */
+/************************************************************/
+istream &operator>>(istream &stdwej, WyrazenieZesp & WyrZ)
 {
-    
+    char znak;
+	stdwej >> WyrZ.Arg1;
+	stdwej >> znak;
+	WyrZ.Op = get_sym(znak);
+	stdwej >> WyrZ.Arg2;
+	return stdwej;
 }
