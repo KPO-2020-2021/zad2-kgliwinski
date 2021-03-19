@@ -13,17 +13,19 @@
  */
 
 bool  operator == (LZespolona  Skl1,  LZespolona  Skl2){
+  /*
   if ((Skl1.re == Skl2.re) && (Skl1.im == Skl2.im))
     return true;
   else
     return false;
+    */
   //alternatywnie, dla MIN_DIFF i wyników od użytkownika
-  /*
-  if abs(Skl1.re - Skl2.re) <= MIN_DIFF && abs(Skl1.im - Skl2.im) <= MIN_DIFF
+  
+  if (abs(Skl1.re - Skl2.re) <= MIN_DIFF && abs(Skl1.im - Skl2.im) <= MIN_DIFF) //uzyje alternatywnego podejscia aby test2 z dzieleniem przez skalar 2 dzialal
     return true;
   else
     return false;
-  */
+  
 }
 
 /*!

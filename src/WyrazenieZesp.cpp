@@ -96,7 +96,13 @@ istream &operator>>(istream &stdwej, WyrazenieZesp & WyrZ)
 }
 
 
-
+/************************************************************/
+/* Definiuje w jaki sposob obliczyc wyrazenia zespolone     */
+/* Argumenty:                                               */
+/*    WyrZ - obliczane wyrazenie zespolone                  */
+/* Zwraca:                                                  */
+/*    LZespolona bedaca wynikiem obliczonego wyrazenia      */
+/************************************************************/
 LZespolona Oblicz(WyrazenieZesp  WyrZ){
     LZespolona wynik;
     switch (WyrZ.Op){
