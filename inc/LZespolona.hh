@@ -16,36 +16,26 @@ struct  LZespolona {
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
 
-LZespolona Sprzezenie(  LZespolona Skl);
+LZespolona Sprzezenie();
 
-double Modul2(  LZespolona Skl);
+double Modul2();
 
+LZespolona  operator - ( LZespolona Skl2);
 
+LZespolona  operator * (LZespolona Skl2);
 
+LZespolona  operator / (LZespolona Skl2);
 
+bool  operator == (LZespolona  Skl2);
 
+LZespolona  operator + (LZespolona  Skl2);
 
-
-
-
+LZespolona operator / (double Skl2);
 
 };
 
-std::ostream & operator << ( std::ostream & stdout ,   LZespolona Skl);
+std::ostream & operator << ( std::ostream & stdwyj, LZespolona Skl);
 
-std::istream & operator >> ( std::istream & stdin,  LZespolona & Skl);
+std::istream & operator >> ( std::istream & stdwej, LZespolona & Skl);
 
-LZespolona  operator - (  LZespolona Skl1,   LZespolona Skl2);
-
-
-LZespolona  operator * (  LZespolona Skl1,   LZespolona Skl2);
-
-
-LZespolona  operator / (  LZespolona Skl1,   LZespolona Skl2);
-
-bool  operator == (  LZespolona  Skl1,    LZespolona  Skl2);
-
-LZespolona  operator + (  LZespolona  Skl1,    LZespolona  Skl2);
-
-LZespolona operator / (  LZespolona Skl1,   double Skl2);
 #endif

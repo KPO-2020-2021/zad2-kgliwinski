@@ -21,6 +21,9 @@ struct WyrazenieZesp {
   LZespolona   Arg1;   // Pierwszy argument wyrazenia arytmetycznego
   Operator     Op;     // Opertor wyrazenia arytmetycznego
   LZespolona   Arg2;   // Drugi argument wyrazenia arytmetycznego
+
+
+  LZespolona Oblicz();
 };
 
 
@@ -32,12 +35,11 @@ struct WyrazenieZesp {
 
 std::ostream & operator << (std::ostream & stdwyj,   WyrazenieZesp  WyrZ);
 
+char read_sym(Operator ope);
 Operator get_sym(char ope);
-
-char read_sym(  Operator ope);
 
 std::istream & operator >> (std::istream & stdwej, WyrazenieZesp & WyrZ);
 
-LZespolona Oblicz(  WyrazenieZesp  WyrZ);
+
 
 #endif

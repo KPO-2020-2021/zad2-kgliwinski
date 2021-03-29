@@ -12,7 +12,7 @@
  *    True dla równych liczb zespolonych.
  */
 
-bool operator == (LZespolona  Skl1,  LZespolona  Skl2){
+bool LZespolona::operator == (LZespolona  Skl2){
   /*
   if ((Skl1.re == Skl2.re) && (Skl1.im == Skl2.im))
     return true;
@@ -21,7 +21,7 @@ bool operator == (LZespolona  Skl1,  LZespolona  Skl2){
     */
   //alternatywnie, dla MIN_DIFF i wyników od użytkownika
   
-  if (abs(Skl1.re - Skl2.re) <= MIN_DIFF && abs(Skl1.im - Skl2.im) <= MIN_DIFF) //uzyje alternatywnego podejscia aby test2 z dzieleniem przez skalar 2 dzialal
+  if (abs(re - Skl2.re) <= MIN_DIFF && abs(im - Skl2.im) <= MIN_DIFF) //uzyje alternatywnego podejscia aby test2 z dzieleniem przez skalar 2 dzialal
     return true;
   else
     return false;
@@ -36,11 +36,11 @@ bool operator == (LZespolona  Skl1,  LZespolona  Skl2){
  * Zwraca:
  *    Sume dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2){
+LZespolona  LZespolona::operator + (LZespolona  Skl2){
   LZespolona  Wynik;
 
-  Wynik.re = Skl1.re + Skl2.re;
-  Wynik.im = Skl1.im + Skl2.im;
+  Wynik.re = re + Skl2.re;
+  Wynik.im = im + Skl2.im;
   return Wynik;
 }
 
@@ -53,11 +53,11 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2){
  * Zwraca:
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator / (  LZespolona  Skl1,   double  Skl2){
+LZespolona  LZespolona::operator / (double  Skl2){
   LZespolona  Wynik;
 
-  Wynik.re = Skl1.re / Skl2;
-  Wynik.im = Skl1.im / Skl2;
+  Wynik.re = re / Skl2;
+  Wynik.im = im / Skl2;
   return Wynik;
 }
 
@@ -69,10 +69,10 @@ LZespolona  operator / (  LZespolona  Skl1,   double  Skl2){
 /* Zwraca:                                                  */
 /*    Sprzezona liczbe zepsolona                            */
 /************************************************************/
-LZespolona LZespolona::Sprzezenie(  LZespolona Skl){
+LZespolona LZespolona::Sprzezenie(){
   LZespolona conjugated;
-  conjugated.re = Skl.re;
-  conjugated.im = -Skl.im;
+  conjugated.re = re;
+  conjugated.im = -im;
   return conjugated;
 }
 
@@ -83,8 +83,8 @@ LZespolona LZespolona::Sprzezenie(  LZespolona Skl){
 /* Zwraca:                                                  */
 /*    Kwadrat modulu liczby zespolonej (liczbe rzeczywista) */
 /************************************************************/
-double LZespolona::Modul2(  LZespolona Skl){
-  double wynik = Skl.re*Skl.re + Skl.im*Skl.im;
+double LZespolona::Modul2(){
+  double wynik = re*re+im*im;
   return wynik;
 }
 
@@ -96,12 +96,12 @@ double LZespolona::Modul2(  LZespolona Skl){
 /* Zwraca:                                                  */
 /*    Roznice dwoch skladnikow przekazanych jako parametry. */
 /************************************************************/
-LZespolona  operator - (  LZespolona  Skl1,    LZespolona  Skl2)
+LZespolona  LZespolona::operator - (LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
-  Wynik.re = Skl1.re - Skl2.re;
-  Wynik.im = Skl1.im - Skl2.im;
+  Wynik.re = re - Skl2.re;
+  Wynik.im = im - Skl2.im;
   return Wynik;
 }
 
@@ -113,12 +113,12 @@ LZespolona  operator - (  LZespolona  Skl1,    LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    Iloczyn dwoch skladnikow przekazanych jako parametry. */
 /************************************************************/
-LZespolona operator * (  LZespolona  Skl1,    LZespolona  Skl2)
+LZespolona LZespolona::operator * ( LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
-  Wynik.re = Skl1.re * Skl2.re  - Skl1.im * Skl2.im;
-  Wynik.im = Skl1.re * Skl2.im + Skl1.im * Skl2.re;
+  Wynik.re = re * Skl2.re - im * Skl2.im;
+  Wynik.im = re * Skl2.im + im * Skl2.re;
   return Wynik;
 }
 
@@ -130,14 +130,15 @@ LZespolona operator * (  LZespolona  Skl1,    LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    Iloraz dwoch skladnikow przekazanych jako parametry.  */
 /************************************************************/
-LZespolona operator / (  LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona LZespolona::operator / (LZespolona  Skl2)
 {
   
-  double modul2_skl2 = Skl2.Modul2(Skl2);        //pobranie modulu Skl2
+  double modul2_skl2 = Skl2.Modul2();        //pobranie modulu Skl2
 
   if (modul2_skl2!=0){                      //Warunek zabezpieczajacy przed dzieleniem przez 0
-    LZespolona  Wynik;
-    Wynik=Skl1*Skl2.Sprzezenie(Skl2)/modul2_skl2;
+    LZespolona  Wynik, Sprzez = Skl2.Sprzezenie(), a;
+    a.re = re; a.im = im;
+    Wynik = a*Sprzez/modul2_skl2;
     return Wynik;
   }
   else{

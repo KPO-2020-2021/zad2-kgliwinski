@@ -100,20 +100,20 @@ std::istream &operator>>(std::istream &stdwej, WyrazenieZesp & WyrZ)
 /* Zwraca:                                                  */
 /*    LZespolona bedaca wynikiem obliczonego wyrazenia      */
 /************************************************************/
-LZespolona Oblicz(  WyrazenieZesp  WyrZ){
+LZespolona WyrazenieZesp::Oblicz(){
     LZespolona wynik;
-    switch (WyrZ.Op){
+    switch ( Op){
         case Op_Dodaj:
-            wynik = WyrZ.Arg1 + WyrZ.Arg2;
+            wynik =  Arg1 +  Arg2;
             break;
         case Op_Odejmij:
-            wynik = WyrZ.Arg1 - WyrZ.Arg2;
+            wynik =  Arg1 -  Arg2;
             break;
         case Op_Mnoz:
-            wynik = WyrZ.Arg1 * WyrZ.Arg2;
+            wynik =  Arg1 *  Arg2;
             break;
         case Op_Dziel:
-            wynik = WyrZ.Arg1 / WyrZ.Arg2;
+            wynik =  Arg1 /  Arg2;
             break;
 
     return wynik;
