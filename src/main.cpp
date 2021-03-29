@@ -42,12 +42,12 @@ int main(int argc, char **argv)
     cout<<"Twoja odpowiedz: ";
     cin>>pyt_test;
 
-    Wynik = WyrZ_PytanieTestowe.Oblicz();
-    if (pyt_test == Wynik){
+    Wynik = WyrZ_PytanieTestowe.Oblicz();   /*liczenie postawionego wyrazenia zespolonego*/
+    if (pyt_test == Wynik){                 /*gdy uzytkownik poda dobra odpowiedz*/
       cout<<"Odpowiedz poprawna"<<endl;
       stat.popr++;
     }
-    else{
+    else{                                   /*gdy uzytkownik poda bledna odpowiedz*/
       cout<<"Blad. Prawidlowym wynikiem jest: "<<Wynik<<endl;
       stat.bled++;
     }
