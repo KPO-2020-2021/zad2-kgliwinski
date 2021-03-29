@@ -1,17 +1,15 @@
-#ifndef WYRAZENIEZESP_HH
-#define WYRAZENIEZESP_HH
-
-
-
-#include "LZespolona.hh"
-#include "WyrazenieZesp.hh"
+#ifndef STATYSTYKI_HH
+#define STATYSTYKI_HH
+#include <iostream>
 
 struct statystyki{
-int licz_pyt;
-int licz_popr;
 double proc_popr;
+unsigned int popr;
+unsigned int bled;
 
-
+double licz_odp();
 };
+
+std::ostream & operator << ( std::ostream & stdwyj , statystyki stat);
 
 #endif

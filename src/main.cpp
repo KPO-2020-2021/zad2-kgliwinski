@@ -8,6 +8,9 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
+  LZespolona pyt_test;    /*zmienna do obslugi pytania testowego*/
+  statystyki stat;        /*zmienna do zliczania odpowiedzi poprawnych*/
+  stat.popr=0; stat.bled=0;
 
   if (argc < 2) {
     cout << endl;
@@ -32,18 +35,31 @@ int main(int argc, char **argv)
   cout << endl;
 
   WyrazenieZesp   WyrZ_PytanieTestowe;
+  LZespolona Wynik;
   
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
-    cout << " Czesc rzeczywista pierwszego argumentu: ";
-    cout << WyrZ_PytanieTestowe.Arg1.re << endl;
+    cout<<"Podaj wynik operacji: "<<WyrZ_PytanieTestowe<<" ="<<endl;
+    cout<<"Twoja odpowiedz: ";
+    cin>>pyt_test;
+
+    Wynik = WyrZ_PytanieTestowe.Oblicz();
+    if (pyt_test == Wynik){
+      cout<<"Odpowiedz poprawna"<<endl;
+      stat.popr++;
+    }
+    else{
+      cout<<"Blad. Prawidlowym wynikiem jest: "<<Wynik<<endl;
+      stat.bled++;
+    }
+
   }
 
   
   cout << endl;
   cout << " Koniec testu" << endl;
   cout << endl;
+  cout<<stat;       /*wypisanie statystyk (poprzez przeciazony operator dla struktury statystyki)*/
 
-WyrazenieZesp Wyrz;
-cin>>Wyrz;
-cout<<Wyrz.Oblicz()<<endl;
+
+
 }

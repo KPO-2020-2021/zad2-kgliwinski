@@ -3,7 +3,7 @@
 
 
 #include "WyrazenieZesp.hh"
-
+#include "Statystyki.hh"
 
 /*
  * Modeluje pojecie baze testu z zestawem pytan w tablicy
