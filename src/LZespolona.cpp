@@ -53,7 +53,7 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2){
  * Zwraca:
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator / (LZespolona  Skl1,  double  Skl2){
+LZespolona  operator / (const LZespolona  Skl1, const double  Skl2){
   LZespolona  Wynik;
 
   Wynik.re = Skl1.re / Skl2;
@@ -69,7 +69,7 @@ LZespolona  operator / (LZespolona  Skl1,  double  Skl2){
 /* Zwraca:                                                  */
 /*    Sprzezona liczbe zepsolona                            */
 /************************************************************/
-LZespolona Sprzezenie(LZespolona Skl){
+LZespolona Sprzezenie(const LZespolona Skl){
   LZespolona conjugated;
   conjugated.re = Skl.re;
   conjugated.im = -Skl.im;
@@ -83,7 +83,7 @@ LZespolona Sprzezenie(LZespolona Skl){
 /* Zwraca:                                                  */
 /*    Kwadrat modulu liczby zespolonej (liczbe rzeczywista) */
 /************************************************************/
-double Modul2(LZespolona Skl){
+double Modul2(const LZespolona Skl){
   double wynik = Skl.re*Skl.re + Skl.im*Skl.im;
   return wynik;
 }
@@ -96,7 +96,7 @@ double Modul2(LZespolona Skl){
 /* Zwraca:                                                  */
 /*    Roznice dwoch skladnikow przekazanych jako parametry. */
 /************************************************************/
-LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona  operator - (const LZespolona  Skl1,  const LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
@@ -113,7 +113,7 @@ LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    Iloczyn dwoch skladnikow przekazanych jako parametry. */
 /************************************************************/
-LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona  operator * (const LZespolona  Skl1,  const LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
@@ -130,7 +130,7 @@ LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    Iloraz dwoch skladnikow przekazanych jako parametry.  */
 /************************************************************/
-LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona  operator / (const LZespolona  Skl1,  const LZespolona  Skl2)
 {
   
   double modul2_skl2 = Modul2(Skl2);        //pobranie modulu Skl2
@@ -140,7 +140,7 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
     return Wynik;
   }
   else{
-    cerr<<"Dzielenie liczb zespolonych nie powiodlo sie. W mianowniku jest liczba rowna 0: kwadrat modulu z liczby ";
+    std::cerr<<"Dzielenie liczb zespolonych nie powiodlo sie. W mianowniku jest liczba rowna 0: kwadrat modulu z liczby ";
     return Skl2;    //dzielenie przez zero zwroci komunikat bledu oraz mianownik dzielenia 
     
   }
@@ -154,8 +154,8 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    wyswietlona odpowiednio liczbe zespolona Skl          */
 /************************************************************/
-ostream & operator << ( ostream & stdwyj , LZespolona Skl){
-  return stdwyj<<Skl.re<<showpos<<Skl.im<<noshowpos<<'i';
+std::ostream & operator << ( std::ostream & stdwyj , const LZespolona Skl){
+  return stdwyj<<Skl.re<< std::showpos <<Skl.im<< std::noshowpos <<'i';
 }
 
 /************************************************************/
@@ -166,13 +166,13 @@ ostream & operator << ( ostream & stdwyj , LZespolona Skl){
 /* Zwraca:                                                  */
 /*    wczytana odpowiednio liczbe zespolona Skl             */
 /************************************************************/
-istream & operator >> ( istream & stdwej,  LZespolona & Skl){
+std::istream & operator >> ( std::istream & stdwej,  LZespolona & Skl){
   char nawias, litera;
   stdwej>>nawias;
   if (stdwej.fail())
     return stdwej;
   if (nawias!='('){
-    stdwej.setstate(ios::failbit);
+    stdwej.setstate(std::ios::failbit);
     return stdwej;
   }
   stdwej>>Skl.re;
@@ -185,14 +185,14 @@ istream & operator >> ( istream & stdwej,  LZespolona & Skl){
   if (stdwej.fail())
     return stdwej;
   if (litera!='i'){
-    stdwej.setstate(ios::failbit);
+    stdwej.setstate(std::ios::failbit);
     return stdwej;
   }
   stdwej>>nawias;
   if (stdwej.fail())
     return stdwej;
   if(nawias!=')'){
-    stdwej.setstate(ios::failbit);
+    stdwej.setstate(std::ios::failbit);
     return stdwej;
   }
   return stdwej;

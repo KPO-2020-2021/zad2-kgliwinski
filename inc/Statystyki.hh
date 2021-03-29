@@ -6,8 +6,12 @@
 #include "LZespolona.hh"
 #include "WyrazenieZesp.hh"
 
-/*
- * Tu nalezy zdefiniowac funkcje, ktore definiuja model statystyki 
- */
+struct statystyki{
+int licz_pyt;
+int licz_popr;
+double proc_popr;
+
+
+};
 
 #endif

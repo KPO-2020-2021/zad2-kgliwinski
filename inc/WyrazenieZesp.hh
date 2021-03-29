@@ -5,7 +5,7 @@
 #include<iostream>
 #include "LZespolona.hh"
 
-using namespace std;
+
 
 /*!
  * Modeluje zbior operatorow arytmetycznych.
@@ -30,14 +30,14 @@ struct WyrazenieZesp {
  */
 
 
-ostream & operator << (ostream & stdwyj, WyrazenieZesp  WyrZ);
+std::ostream & operator << (std::ostream & stdwyj, const WyrazenieZesp  WyrZ);
 
 Operator get_sym(char ope);
 
-char read_sym(Operator ope);
+char read_sym(const Operator ope);
 
-istream & operator >> (istream & stdwej, WyrazenieZesp & WyrZ);
+std::istream & operator >> (std::istream & stdwej, WyrazenieZesp & WyrZ);
 
-LZespolona Oblicz(WyrazenieZesp  WyrZ);
+LZespolona Oblicz(const WyrazenieZesp  WyrZ);
 
 #endif

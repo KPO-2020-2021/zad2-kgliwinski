@@ -1,9 +1,6 @@
 #include "WyrazenieZesp.hh"
 
-/*
- * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
- * w pliku naglowkowym.
- */
+
 /************************************************************/
 /* Definiuje w jaki sposob wyswietlac wyrazenia zespolone   */
 /* Argumenty:                                               */
@@ -12,11 +9,11 @@
 /* Zwraca:                                                  */
 /*    wyswietlone odpowienio wyrazenie WyrZ                 */
 /************************************************************/
-ostream &operator<<(ostream &stdwyj, WyrazenieZesp WyrZ)
+std::ostream &operator<<(std::ostream &stdwyj, const WyrazenieZesp WyrZ)
 {
-    stdwyj<<'('<<WyrZ.Arg1.re<<showpos<<WyrZ.Arg1.im<<noshowpos<<'i'<<')';
+    stdwyj<<'('<<WyrZ.Arg1.re<<std::showpos<<WyrZ.Arg1.im<<std::noshowpos<<'i'<<')';
     stdwyj<<read_sym(WyrZ.Op);
-    stdwyj<<'('<<WyrZ.Arg2.re<<showpos<<WyrZ.Arg2.im<<noshowpos<<'i'<<')';
+    stdwyj<<'('<<WyrZ.Arg2.re<<std::showpos<<WyrZ.Arg2.im<<std::noshowpos<<'i'<<')';
     return stdwyj;
 }
 /************************************************************/
@@ -43,7 +40,7 @@ Operator get_sym(char ope)
             oper = Op_Dziel;
             break;
         default:
-            cerr<<"Bledny operator matematyczny";
+            std::cerr<<"Bledny operator matematyczny";
             break;
     }
     return oper;
@@ -55,7 +52,7 @@ Operator get_sym(char ope)
 /* Zwraca:                                                  */
 /*    tablice znakow sym z symbolem +,-,*,/                 */
 /************************************************************/
-char read_sym(Operator ope){
+char read_sym(const Operator ope){
     char sym;
     switch (ope){
         case Op_Dodaj:
@@ -71,7 +68,7 @@ char read_sym(Operator ope){
             sym='/';
             break;
         default:
-            cerr<<"Nie podano operatora";
+            std::cerr<<"Nie podano operatora";
             sym='\0';
             break;
     }
@@ -85,7 +82,7 @@ char read_sym(Operator ope){
 /* Zwraca:                                                  */
 /*    wczytane odpowiednio wyrazenie zespolone WyrZ         */
 /************************************************************/
-istream &operator>>(istream &stdwej, WyrazenieZesp & WyrZ)
+std::istream &operator>>(std::istream &stdwej, WyrazenieZesp & WyrZ)
 {
     char znak;
 	stdwej >> WyrZ.Arg1;
@@ -103,7 +100,7 @@ istream &operator>>(istream &stdwej, WyrazenieZesp & WyrZ)
 /* Zwraca:                                                  */
 /*    LZespolona bedaca wynikiem obliczonego wyrazenia      */
 /************************************************************/
-LZespolona Oblicz(WyrazenieZesp  WyrZ){
+LZespolona Oblicz(const WyrazenieZesp  WyrZ){
     LZespolona wynik;
     switch (WyrZ.Op){
         case Op_Dodaj:

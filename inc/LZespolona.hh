@@ -1,7 +1,7 @@
 #ifndef LZESPOLONA_HH
 #define LZESPOLONA_HH
+
 #include<iostream>
-using namespace std;
 /*!
  *  Plik zawiera definicje struktury LZesplona oraz zapowiedzi
  *  przeciazen operatorow arytmetycznych dzialajacych na tej 
@@ -22,32 +22,29 @@ struct  LZespolona {
  * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
  */
 
-bool  operator == (LZespolona  Skl1,  LZespolona  Skl2);
+bool  operator == (const LZespolona  Skl1,  const LZespolona  Skl2);
 
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
+LZespolona  operator + (const LZespolona  Skl1, const  LZespolona  Skl2);
 
-LZespolona operator / (LZespolona Skl1, double Skl2);
+LZespolona operator / (const LZespolona Skl1, const double Skl2);
 
-LZespolona Sprzezenie(LZespolona Skl);
-
-
-double Modul2(LZespolona Skl);
+LZespolona Sprzezenie(const LZespolona Skl);
 
 
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
+double Modul2(const LZespolona Skl);
 
 
-LZespolona  operator - (LZespolona Skl1, LZespolona Skl2);
+LZespolona  operator - (const LZespolona Skl1, const LZespolona Skl2);
 
 
-LZespolona  operator * (LZespolona Skl1, LZespolona Skl2);
+LZespolona  operator * (const LZespolona Skl1, const LZespolona Skl2);
 
 
-LZespolona  operator / (LZespolona Skl1, LZespolona Skl2);
+LZespolona  operator / (const LZespolona Skl1,const  LZespolona Skl2);
 
 
-ostream & operator << ( ostream & stdout , LZespolona Skl);
+std::ostream & operator << ( std::ostream & stdout , const LZespolona Skl);
 
-istream & operator >> ( istream & stdin,  LZespolona & Skl);
+std::istream & operator >> ( std::istream & stdin,  LZespolona & Skl);
 
 #endif
