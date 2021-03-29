@@ -12,7 +12,7 @@
  *    True dla równych liczb zespolonych.
  */
 
-bool  operator == (LZespolona  Skl1,  LZespolona  Skl2){
+bool operator == (LZespolona  Skl1,  LZespolona  Skl2){
   /*
   if ((Skl1.re == Skl2.re) && (Skl1.im == Skl2.im))
     return true;
@@ -53,7 +53,7 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2){
  * Zwraca:
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator / (const LZespolona  Skl1, const double  Skl2){
+LZespolona  operator / (  LZespolona  Skl1,   double  Skl2){
   LZespolona  Wynik;
 
   Wynik.re = Skl1.re / Skl2;
@@ -69,7 +69,7 @@ LZespolona  operator / (const LZespolona  Skl1, const double  Skl2){
 /* Zwraca:                                                  */
 /*    Sprzezona liczbe zepsolona                            */
 /************************************************************/
-LZespolona Sprzezenie(const LZespolona Skl){
+LZespolona LZespolona::Sprzezenie(  LZespolona Skl){
   LZespolona conjugated;
   conjugated.re = Skl.re;
   conjugated.im = -Skl.im;
@@ -83,7 +83,7 @@ LZespolona Sprzezenie(const LZespolona Skl){
 /* Zwraca:                                                  */
 /*    Kwadrat modulu liczby zespolonej (liczbe rzeczywista) */
 /************************************************************/
-double Modul2(const LZespolona Skl){
+double LZespolona::Modul2(  LZespolona Skl){
   double wynik = Skl.re*Skl.re + Skl.im*Skl.im;
   return wynik;
 }
@@ -96,7 +96,7 @@ double Modul2(const LZespolona Skl){
 /* Zwraca:                                                  */
 /*    Roznice dwoch skladnikow przekazanych jako parametry. */
 /************************************************************/
-LZespolona  operator - (const LZespolona  Skl1,  const LZespolona  Skl2)
+LZespolona  operator - (  LZespolona  Skl1,    LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
@@ -113,7 +113,7 @@ LZespolona  operator - (const LZespolona  Skl1,  const LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    Iloczyn dwoch skladnikow przekazanych jako parametry. */
 /************************************************************/
-LZespolona  operator * (const LZespolona  Skl1,  const LZespolona  Skl2)
+LZespolona operator * (  LZespolona  Skl1,    LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
@@ -130,13 +130,14 @@ LZespolona  operator * (const LZespolona  Skl1,  const LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    Iloraz dwoch skladnikow przekazanych jako parametry.  */
 /************************************************************/
-LZespolona  operator / (const LZespolona  Skl1,  const LZespolona  Skl2)
+LZespolona operator / (  LZespolona  Skl1,  LZespolona  Skl2)
 {
   
-  double modul2_skl2 = Modul2(Skl2);        //pobranie modulu Skl2
+  double modul2_skl2 = Skl2.Modul2(Skl2);        //pobranie modulu Skl2
+
   if (modul2_skl2!=0){                      //Warunek zabezpieczajacy przed dzieleniem przez 0
     LZespolona  Wynik;
-    Wynik=Skl1*Sprzezenie(Skl2)/modul2_skl2;
+    Wynik=Skl1*Skl2.Sprzezenie(Skl2)/modul2_skl2;
     return Wynik;
   }
   else{
@@ -154,7 +155,7 @@ LZespolona  operator / (const LZespolona  Skl1,  const LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    wyswietlona odpowiednio liczbe zespolona Skl          */
 /************************************************************/
-std::ostream & operator << ( std::ostream & stdwyj , const LZespolona Skl){
+std::ostream & operator << ( std::ostream & stdwyj ,   LZespolona Skl){
   return stdwyj<<Skl.re<< std::showpos <<Skl.im<< std::noshowpos <<'i';
 }
 

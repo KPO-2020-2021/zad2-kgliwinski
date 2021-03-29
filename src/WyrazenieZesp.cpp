@@ -9,7 +9,7 @@
 /* Zwraca:                                                  */
 /*    wyswietlone odpowienio wyrazenie WyrZ                 */
 /************************************************************/
-std::ostream &operator<<(std::ostream &stdwyj, const WyrazenieZesp WyrZ)
+std::ostream &operator<<(std::ostream &stdwyj,   WyrazenieZesp WyrZ)
 {
     stdwyj<<'('<<WyrZ.Arg1.re<<std::showpos<<WyrZ.Arg1.im<<std::noshowpos<<'i'<<')';
     stdwyj<<read_sym(WyrZ.Op);
@@ -52,7 +52,7 @@ Operator get_sym(char ope)
 /* Zwraca:                                                  */
 /*    tablice znakow sym z symbolem +,-,*,/                 */
 /************************************************************/
-char read_sym(const Operator ope){
+char read_sym(  Operator ope){
     char sym;
     switch (ope){
         case Op_Dodaj:
@@ -100,7 +100,7 @@ std::istream &operator>>(std::istream &stdwej, WyrazenieZesp & WyrZ)
 /* Zwraca:                                                  */
 /*    LZespolona bedaca wynikiem obliczonego wyrazenia      */
 /************************************************************/
-LZespolona Oblicz(const WyrazenieZesp  WyrZ){
+LZespolona Oblicz(  WyrazenieZesp  WyrZ){
     LZespolona wynik;
     switch (WyrZ.Op){
         case Op_Dodaj:
