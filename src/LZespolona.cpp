@@ -157,11 +157,12 @@ LZespolona LZespolona::operator / (LZespolona  Skl2)
 /*    wyswietlona odpowiednio liczbe zespolona Skl          */
 /************************************************************/
 std::ostream & operator << ( std::ostream & stdwyj ,   LZespolona Skl){
+  stdwyj.precision(4);
   return stdwyj<<Skl.re<< std::showpos <<Skl.im<< std::noshowpos <<'i';
 }
 
 void blad_wczyt (std::istream & stdwej){
-  
+    
     std::cerr<< std::endl <<"Blad zapisu liczby zespolonej. Sprobuj jeszcze raz."<<std::endl ;
     stdwej.setstate(std::ios::failbit);
 
