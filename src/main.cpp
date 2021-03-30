@@ -64,4 +64,6 @@ int main(int argc, char **argv)
   cout << " Koniec testu" << endl;
   cout << endl;
   cout << stat; /*wypisanie statystyk (poprzez przeciazony operator dla struktury statystyki)*/
+
+
 }

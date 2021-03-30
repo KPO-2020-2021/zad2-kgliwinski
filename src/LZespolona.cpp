@@ -12,19 +12,19 @@
  *    True dla równych liczb zespolonych.
  */
 
-bool LZespolona::operator == (LZespolona  Skl2){
+bool LZespolona::operator == (LZespolona  Skl2) const {
   /*
-  if ((Skl1.re == Skl2.re) && (Skl1.im == Skl2.im))
+  if ((re == Skl2.re) && (im == Skl2.im))
     return true;
   else
     return false;
     */
   //alternatywnie, dla MIN_DIFF i wyników od użytkownika
   
-  if (abs(re - Skl2.re) <= MIN_DIFF && abs(im - Skl2.im) <= MIN_DIFF) //uzyje alternatywnego podejscia aby test2 z dzieleniem przez skalar 2 dzialal
+  if (std::abs(re - Skl2.re) <= MIN_DIFF && std::abs(im - Skl2.im) <= MIN_DIFF) //uzyje alternatywnego podejscia aby test2 z dzieleniem przez skalar 2 dzialal
     return true;
   else
-    return false;
+    return false; 
   
 }
 
@@ -157,14 +157,14 @@ LZespolona LZespolona::operator / (LZespolona  Skl2)
 /*    wyswietlona odpowiednio liczbe zespolona Skl          */
 /************************************************************/
 std::ostream & operator << ( std::ostream & stdwyj ,   LZespolona Skl){
-  stdwyj.precision(4);
+  stdwyj.precision(4);      /*wypisanie do 4 miejsc po przecinku*/
   return stdwyj<<Skl.re<< std::showpos <<Skl.im<< std::noshowpos <<'i';
 }
 
 void blad_wczyt (std::istream & stdwej){
     
-    std::cerr<< std::endl <<"Blad zapisu liczby zespolonej. Sprobuj jeszcze raz."<<std::endl ;
-    stdwej.setstate(std::ios::failbit);
+    std::cerr<< std::endl <<"Blad zapisu liczby zespolonej. Sprobuj jeszcze raz."<<std::endl ;  /*komunikat o bledzie wczytania*/
+    stdwej.setstate(std::ios::failbit);   /*ustawienie flagi bledu wczytania*/
 
 }
 
@@ -180,11 +180,11 @@ void blad_wczyt (std::istream & stdwej){
 std::istream & operator >> ( std::istream & stdwej,  LZespolona & Skl){
   char nawias, litera;
   stdwej>>nawias;
-  if (stdwej.fail()){
+  if (stdwej.fail()){   /*jesli strumien jest pusty*/
     blad_wczyt(stdwej);
     return stdwej;
   }
-  if (nawias!='('){
+  if (nawias!='('){     /*gdy brakuje nawiasu*/
     blad_wczyt(stdwej);
     return stdwej;
   }

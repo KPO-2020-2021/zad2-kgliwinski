@@ -33,12 +33,12 @@ struct WyrazenieZesp {
  */
 
 
-std::ostream & operator << (std::ostream & stdwyj,   WyrazenieZesp  WyrZ);
+std::ostream & operator << (std::ostream & stdwyj,   WyrazenieZesp  WyrZ);  /*przeciazenie operatora wyjscia dla WyrazeniaZesp*/
 
-char read_sym(Operator ope);
-Operator get_sym(char ope);
+char read_sym(Operator ope);      /*funkcja czytajaca operator*/
+Operator get_sym(char ope);       /*funkcja zapisujaca operator*/
 
-std::istream & operator >> (std::istream & stdwej, WyrazenieZesp & WyrZ);
+std::istream & operator >> (std::istream & stdwej, WyrazenieZesp & WyrZ);   /*przeciazenie operatora czytania dla WyrazeniaZesp */
 
 
 

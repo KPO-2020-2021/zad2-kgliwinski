@@ -26,7 +26,7 @@ LZespolona  operator * (LZespolona Skl2);
 
 LZespolona  operator / (LZespolona Skl2);
 
-bool  operator == (LZespolona  Skl2);
+bool  operator == (LZespolona Skl2) const ;
 
 LZespolona  operator + (LZespolona  Skl2);
 
