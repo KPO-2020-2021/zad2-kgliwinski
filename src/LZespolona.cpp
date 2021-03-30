@@ -2,7 +2,7 @@
 #include <cmath>
 
 #define MIN_DIFF 0.00001
-
+#define READ_ERR -1   /*zmienna do sprawdzania bledu odczytu*/
 /*!
  * Realizuje porównanie dwoch liczb zespolonych.
  * Argumenty:
@@ -160,6 +160,14 @@ std::ostream & operator << ( std::ostream & stdwyj ,   LZespolona Skl){
   return stdwyj<<Skl.re<< std::showpos <<Skl.im<< std::noshowpos <<'i';
 }
 
+void blad_wczyt (std::istream & stdwej){
+  
+    std::cerr<< std::endl <<"Blad zapisu liczby zespolonej. Sprobuj jeszcze raz."<<std::endl ;
+    stdwej.setstate(std::ios::failbit);
+
+}
+
+
 /************************************************************/
 /* Definiuje w jaki sposob wczytywac liczby zespolone       */
 /* Argumenty:                                               */
@@ -171,32 +179,43 @@ std::ostream & operator << ( std::ostream & stdwyj ,   LZespolona Skl){
 std::istream & operator >> ( std::istream & stdwej,  LZespolona & Skl){
   char nawias, litera;
   stdwej>>nawias;
-  if (stdwej.fail())
+  if (stdwej.fail()){
+    blad_wczyt(stdwej);
     return stdwej;
+  }
   if (nawias!='('){
-    stdwej.setstate(std::ios::failbit);
+    blad_wczyt(stdwej);
     return stdwej;
   }
   stdwej>>Skl.re;
-  if (stdwej.fail())
+  if (stdwej.fail()){
+    blad_wczyt(stdwej);
     return stdwej;
+  }
   stdwej>>Skl.im;
-  if (stdwej.fail())
+  if (stdwej.fail()){
+    blad_wczyt(stdwej);
     return stdwej;
+  }
   stdwej>>litera;
-  if (stdwej.fail())
+  if (stdwej.fail()){
+    blad_wczyt(stdwej);
     return stdwej;
+  }
   if (litera!='i'){
-    stdwej.setstate(std::ios::failbit);
+    blad_wczyt(stdwej);
     return stdwej;
   }
   stdwej>>nawias;
-  if (stdwej.fail())
-    return stdwej;
-  if(nawias!=')'){
-    stdwej.setstate(std::ios::failbit);
+  if (stdwej.fail()){
+    blad_wczyt(stdwej);
     return stdwej;
   }
+  if(nawias!=')'){
+    blad_wczyt(stdwej);
+    return stdwej;
+  }
+
   return stdwej;
 
 

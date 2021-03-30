@@ -116,7 +116,6 @@ LZespolona WyrazenieZesp::Oblicz(){
             wynik =  Arg1 /  Arg2;
             break;
 
-    return wynik;
     }
     return wynik;
 }

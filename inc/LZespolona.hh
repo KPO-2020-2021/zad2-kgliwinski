@@ -38,4 +38,5 @@ std::ostream & operator << ( std::ostream & stdwyj, LZespolona Skl);
 
 std::istream & operator >> ( std::istream & stdwej, LZespolona & Skl);
 
+void blad_wczyt (std::istream & stdwej);
 #endif
