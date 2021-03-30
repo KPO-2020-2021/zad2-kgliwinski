@@ -161,6 +161,14 @@ std::ostream & operator << ( std::ostream & stdwyj ,   LZespolona Skl){
   return stdwyj<<Skl.re<< std::showpos <<Skl.im<< std::noshowpos <<'i';
 }
 
+/************************************************************/
+/* Definiuje co program ma zrobic gdy wczytywana jest       */
+/* bledna wartosc                                           */
+/* Argumenty:                                               */
+/*    stdwej - operator strumienia wejsciowego              */
+/* Zwraca:                                                  */
+/*    komunikat bledu oraz ustawia flage failbit dla stdwej */
+/************************************************************/
 void blad_wczyt (std::istream & stdwej){
     
     std::cerr<< std::endl <<"Blad zapisu liczby zespolonej. Sprobuj jeszcze raz."<<std::endl ;  /*komunikat o bledzie wczytania*/
@@ -168,6 +176,26 @@ void blad_wczyt (std::istream & stdwej){
 
 }
 
+/************************************************************/
+/* Wczytuje znak do strumienia i zwraca wartosc logiczna    */
+/* czy zostal wczytany odpowiedni znak                      */
+/* Argumenty:                                               */
+/*    stdwej - operator strumienia wejsciowego              */
+/*    znak - znak ktory chcemy sprawdzic czy jest           */
+/*           odpowiednio wczytywany                         */
+/* Zwraca:                                                  */
+/*    znak w strumieniu wejsciowym oraz 1 lub 0 (w          */
+/*    zaleznosci czy znak sie odpowiednio wczytal           */
+/************************************************************/
+bool czyt_sym(std::istream &stdwej, char znak){
+  char read_znak = ' ';
+  stdwej>>read_znak;
+  if (read_znak != znak){
+    blad_wczyt(stdwej);
+    return 0;
+  }
+  return 1;
+}
 
 /************************************************************/
 /* Definiuje w jaki sposob wczytywac liczby zespolone       */
@@ -178,16 +206,10 @@ void blad_wczyt (std::istream & stdwej){
 /*    wczytana odpowiednio liczbe zespolona Skl             */
 /************************************************************/
 std::istream & operator >> ( std::istream & stdwej,  LZespolona & Skl){
-  char nawias, litera;
-  stdwej>>nawias;
-  if (stdwej.fail()){   /*jesli strumien jest pusty*/
-    blad_wczyt(stdwej);
+
+  if(!czyt_sym(stdwej, '('))
     return stdwej;
-  }
-  if (nawias!='('){     /*gdy brakuje nawiasu*/
-    blad_wczyt(stdwej);
-    return stdwej;
-  }
+  
   stdwej>>Skl.re;
   if (stdwej.fail()){
     blad_wczyt(stdwej);
@@ -198,24 +220,11 @@ std::istream & operator >> ( std::istream & stdwej,  LZespolona & Skl){
     blad_wczyt(stdwej);
     return stdwej;
   }
-  stdwej>>litera;
-  if (stdwej.fail()){
-    blad_wczyt(stdwej);
+  if(!czyt_sym(stdwej, 'i'))
     return stdwej;
-  }
-  if (litera!='i'){
-    blad_wczyt(stdwej);
+  
+  if(!czyt_sym(stdwej, ')'))
     return stdwej;
-  }
-  stdwej>>nawias;
-  if (stdwej.fail()){
-    blad_wczyt(stdwej);
-    return stdwej;
-  }
-  if(nawias!=')'){
-    blad_wczyt(stdwej);
-    return stdwej;
-  }
 
   return stdwej;
 
