@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 
   WyrazenieZesp WyrZ_PytanieTestowe;
   LZespolona Wynik;
-
+try{
   while (PobierzNastpnePytanie(&BazaT, &WyrZ_PytanieTestowe))
   {
     cout << "Podaj wynik operacji: " << WyrZ_PytanieTestowe << " =" << endl;
@@ -60,7 +60,11 @@ int main(int argc, char **argv)
       stat.bled++;  /*zliczanie odpowiedzi niepoprawnych*/
     }
   }
-
+}
+catch (runtime_error& e){
+  cout<< "Exception occured" << endl;
+    cout<<e.what();
+}
   cout << endl;
   cout << " Koniec testu" << endl;
   cout << endl;

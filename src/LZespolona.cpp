@@ -56,10 +56,14 @@ LZespolona LZespolona::operator+(LZespolona Skl2)
 LZespolona LZespolona::operator/(double Skl2)
 {
   LZespolona Wynik;
-
+  if (Skl2!=0){
   Wynik.re = re / Skl2;
   Wynik.im = im / Skl2;
   return Wynik;
+  }
+  else{   /*Przy dzieleniu przez 0 funkcja wypisuje blad oraz zwraca liczbe zespolona rowna 0*/
+    throw std::runtime_error("Blad: Proba dzielenia przez 0");
+  }
 }
 
 /************************************************************/
@@ -147,8 +151,7 @@ LZespolona LZespolona::operator/(LZespolona Skl2)
   }
   else
   {
-    std::cerr << "Dzielenie liczb zespolonych nie powiodlo sie. W mianowniku jest liczba rowna 0: kwadrat modulu z liczby ";
-    return Skl2; //dzielenie przez zero zwroci komunikat bledu oraz mianownik dzielenia
+    throw std::runtime_error("Blad: Proba dzielenia przez 0");
   }
 }
 
