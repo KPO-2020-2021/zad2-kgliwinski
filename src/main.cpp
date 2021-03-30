@@ -41,6 +41,7 @@ int main(int argc, char **argv)
 
      while (cin.fail())   /*w przypadku blednego czytania liczby (zly format) petla w nieskonczonosc oczekuje az uzytkownik wczyta poprawnie liczbe*/
     {
+ 
       cin.clear();
       cin.ignore(10000, '\n');
       cout << endl<<"Twoja odpowiedz: ";
@@ -65,5 +66,5 @@ int main(int argc, char **argv)
   cout << endl;
   cout << stat; /*wypisanie statystyk (poprzez przeciazony operator dla struktury statystyki)*/
 
-
-}
+ 
+  }

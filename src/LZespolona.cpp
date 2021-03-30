@@ -2,7 +2,7 @@
 #include <cmath>
 
 #define MIN_DIFF 0.00001
-#define READ_ERR -1   /*zmienna do sprawdzania bledu odczytu*/
+#define READ_ERR -1 /*zmienna do sprawdzania bledu odczytu*/
 /*!
  * Realizuje porównanie dwoch liczb zespolonych.
  * Argumenty:
@@ -12,7 +12,8 @@
  *    True dla równych liczb zespolonych.
  */
 
-bool LZespolona::operator == (LZespolona  Skl2) const {
+bool LZespolona::operator==(LZespolona Skl2) const
+{
   /*
   if ((re == Skl2.re) && (im == Skl2.im))
     return true;
@@ -20,12 +21,11 @@ bool LZespolona::operator == (LZespolona  Skl2) const {
     return false;
     */
   //alternatywnie, dla MIN_DIFF i wyników od użytkownika
-  
+
   if (std::abs(re - Skl2.re) <= MIN_DIFF && std::abs(im - Skl2.im) <= MIN_DIFF) //uzyje alternatywnego podejscia aby test2 z dzieleniem przez skalar 2 dzialal
     return true;
   else
-    return false; 
-  
+    return false;
 }
 
 /*!
@@ -36,14 +36,14 @@ bool LZespolona::operator == (LZespolona  Skl2) const {
  * Zwraca:
  *    Sume dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  LZespolona::operator + (LZespolona  Skl2){
-  LZespolona  Wynik;
+LZespolona LZespolona::operator+(LZespolona Skl2)
+{
+  LZespolona Wynik;
 
   Wynik.re = re + Skl2.re;
   Wynik.im = im + Skl2.im;
   return Wynik;
 }
-
 
 /*!
  * Realizuje dzielenie liczby zespolonej przez skakar.
@@ -53,14 +53,14 @@ LZespolona  LZespolona::operator + (LZespolona  Skl2){
  * Zwraca:
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  LZespolona::operator / (double  Skl2){
-  LZespolona  Wynik;
+LZespolona LZespolona::operator/(double Skl2)
+{
+  LZespolona Wynik;
 
   Wynik.re = re / Skl2;
   Wynik.im = im / Skl2;
   return Wynik;
 }
-
 
 /************************************************************/
 /* Realizuje sprzezenie jednej liczby zespolonej.           */
@@ -69,7 +69,8 @@ LZespolona  LZespolona::operator / (double  Skl2){
 /* Zwraca:                                                  */
 /*    Sprzezona liczbe zepsolona                            */
 /************************************************************/
-LZespolona LZespolona::Sprzezenie(){
+LZespolona LZespolona::Sprzezenie()
+{
   LZespolona conjugated;
   conjugated.re = re;
   conjugated.im = -im;
@@ -83,8 +84,9 @@ LZespolona LZespolona::Sprzezenie(){
 /* Zwraca:                                                  */
 /*    Kwadrat modulu liczby zespolonej (liczbe rzeczywista) */
 /************************************************************/
-double LZespolona::Modul2(){
-  double wynik = re*re+im*im;
+double LZespolona::Modul2()
+{
+  double wynik = re * re + im * im;
   return wynik;
 }
 
@@ -96,9 +98,9 @@ double LZespolona::Modul2(){
 /* Zwraca:                                                  */
 /*    Roznice dwoch skladnikow przekazanych jako parametry. */
 /************************************************************/
-LZespolona  LZespolona::operator - (LZespolona  Skl2)
+LZespolona LZespolona::operator-(LZespolona Skl2)
 {
-  LZespolona  Wynik;
+  LZespolona Wynik;
 
   Wynik.re = re - Skl2.re;
   Wynik.im = im - Skl2.im;
@@ -113,9 +115,9 @@ LZespolona  LZespolona::operator - (LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    Iloczyn dwoch skladnikow przekazanych jako parametry. */
 /************************************************************/
-LZespolona LZespolona::operator * ( LZespolona  Skl2)
+LZespolona LZespolona::operator*(LZespolona Skl2)
 {
-  LZespolona  Wynik;
+  LZespolona Wynik;
 
   Wynik.re = re * Skl2.re - im * Skl2.im;
   Wynik.im = re * Skl2.im + im * Skl2.re;
@@ -130,21 +132,23 @@ LZespolona LZespolona::operator * ( LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    Iloraz dwoch skladnikow przekazanych jako parametry.  */
 /************************************************************/
-LZespolona LZespolona::operator / (LZespolona  Skl2)
+LZespolona LZespolona::operator/(LZespolona Skl2)
 {
-  
-  double modul2_skl2 = Skl2.Modul2();        //pobranie modulu Skl2
 
-  if (modul2_skl2!=0){                      //Warunek zabezpieczajacy przed dzieleniem przez 0
-    LZespolona  Wynik, Sprzez = Skl2.Sprzezenie(), a;
-    a.re = re; a.im = im;
-    Wynik = a*Sprzez/modul2_skl2;
+  double modul2_skl2 = Skl2.Modul2(); //pobranie modulu Skl2
+
+  if (modul2_skl2 != 0)
+  { //Warunek zabezpieczajacy przed dzieleniem przez 0
+    LZespolona Wynik, Sprzez = Skl2.Sprzezenie(), a;
+    a.re = re;
+    a.im = im;
+    Wynik = a * Sprzez / modul2_skl2;
     return Wynik;
   }
-  else{
-    std::cerr<<"Dzielenie liczb zespolonych nie powiodlo sie. W mianowniku jest liczba rowna 0: kwadrat modulu z liczby ";
-    return Skl2;    //dzielenie przez zero zwroci komunikat bledu oraz mianownik dzielenia 
-    
+  else
+  {
+    std::cerr << "Dzielenie liczb zespolonych nie powiodlo sie. W mianowniku jest liczba rowna 0: kwadrat modulu z liczby ";
+    return Skl2; //dzielenie przez zero zwroci komunikat bledu oraz mianownik dzielenia
   }
 }
 
@@ -156,9 +160,10 @@ LZespolona LZespolona::operator / (LZespolona  Skl2)
 /* Zwraca:                                                  */
 /*    wyswietlona odpowiednio liczbe zespolona Skl          */
 /************************************************************/
-std::ostream & operator << ( std::ostream & stdwyj ,   LZespolona Skl){
-  stdwyj.precision(4);      /*wypisanie do 4 miejsc po przecinku*/
-  return stdwyj<<Skl.re<< std::showpos <<Skl.im<< std::noshowpos <<'i';
+std::ostream &operator<<(std::ostream &stdwyj, LZespolona Skl)
+{
+  stdwyj.precision(4); /*wypisanie do 4 miejsc po przecinku*/
+  return stdwyj << Skl.re << std::showpos << Skl.im << std::noshowpos << 'i';
 }
 
 /************************************************************/
@@ -169,11 +174,12 @@ std::ostream & operator << ( std::ostream & stdwyj ,   LZespolona Skl){
 /* Zwraca:                                                  */
 /*    komunikat bledu oraz ustawia flage failbit dla stdwej */
 /************************************************************/
-void blad_wczyt (std::istream & stdwej){
-    
-    std::cerr<< std::endl <<"Blad zapisu liczby zespolonej. Sprobuj jeszcze raz."<<std::endl ;  /*komunikat o bledzie wczytania*/
-    stdwej.setstate(std::ios::failbit);   /*ustawienie flagi bledu wczytania*/
+void blad_wczyt(std::istream &stdwej)
+{
 
+  std::cerr << std::endl
+            << "Blad zapisu liczby zespolonej. Sprobuj jeszcze raz." << std::endl; /*komunikat o bledzie wczytania*/
+  stdwej.setstate(std::ios::failbit);                                              /*ustawienie flagi bledu wczytania*/
 }
 
 /************************************************************/
@@ -187,10 +193,12 @@ void blad_wczyt (std::istream & stdwej){
 /*    znak w strumieniu wejsciowym oraz 1 lub 0 (w          */
 /*    zaleznosci czy znak sie odpowiednio wczytal           */
 /************************************************************/
-bool czyt_sym(std::istream &stdwej, char znak){
+bool czyt_sym(std::istream &stdwej, char znak)
+{
   char read_znak = ' ';
-  stdwej>>read_znak;
-  if (read_znak != znak){
+  stdwej >> read_znak;
+  if (read_znak != znak)
+  {
     blad_wczyt(stdwej);
     return 0;
   }
@@ -205,28 +213,29 @@ bool czyt_sym(std::istream &stdwej, char znak){
 /* Zwraca:                                                  */
 /*    wczytana odpowiednio liczbe zespolona Skl             */
 /************************************************************/
-std::istream & operator >> ( std::istream & stdwej,  LZespolona & Skl){
+std::istream &operator>>(std::istream &stdwej, LZespolona &Skl)
+{
 
-  if(!czyt_sym(stdwej, '('))
+  if (!czyt_sym(stdwej, '('))
     return stdwej;
-  
-  stdwej>>Skl.re;
-  if (stdwej.fail()){
+
+  stdwej >> Skl.re;
+  if (stdwej.fail())
+  {
     blad_wczyt(stdwej);
     return stdwej;
   }
-  stdwej>>Skl.im;
-  if (stdwej.fail()){
+  stdwej >> Skl.im;
+  if (stdwej.fail())
+  {
     blad_wczyt(stdwej);
     return stdwej;
   }
-  if(!czyt_sym(stdwej, 'i'))
+  if (!czyt_sym(stdwej, 'i'))
     return stdwej;
-  
-  if(!czyt_sym(stdwej, ')'))
+
+  if (!czyt_sym(stdwej, ')'))
     return stdwej;
 
   return stdwej;
-
-
 }
