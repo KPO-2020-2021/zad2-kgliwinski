@@ -57,9 +57,11 @@ test0.cpp:
 	-sprawdza przeciazenie operatora rownosci (==) dla rownosci i nierownosci
 	-sprawdza dla malych liczb dzialanie operatora
 		
-		*UWAGA* testy 5 i 6 z test0.cpp prezentuja BLEDNE dzialanie operatora dla liczb mniejszych lub rownych od 0.0001,
+		*UWAGA* testy 5 i 6 z test0.cpp prezentuja BLEDNE dzialanie operatora 
+		dla liczb mniejszych lub rownych od 0.0001,
 		jest to spowodowane uzyciem funkcji rownosci poprzez porownanie dla bardzo malych wartosci
-		Wypisanie bledu przez test powoduje ze reszta testow sie nie wykonuje, dlatego postanowilem ze test bedzie sprawdzal czy funkcja "nie dziala"
+		Wypisanie bledu przez test powoduje ze reszta testow sie nie wykonuje, 
+		dlatego postanowilem ze test bedzie sprawdzal czy funkcja "nie dziala"
 		i przez to test nie zwraca bledu, a reszta testow moze sie wykonac
 
 test1.cpp:
@@ -79,11 +81,15 @@ test4.cpp:
 	-sprawdza wyswietlanie i wczytywanie liczb i wyrazen zespolonych
 	-obsluguje zaokraglenia (np. dla 2.0/3.0 = 0.667), funkcja wypisujaca zaokragla do 4 miejsca po przecinku
 	-sprawdza dzialanie dla malych liczb
-	-sprawdza asercje w przypadku zlego wejscia (np. 0+0i) (brak nawiasu z przodu) , (1+1) (brak i) i.t.p.) dla liczb zespolonych
-	-sprawdza asercje w przypadku zlego wejscia (np. podobnie jak wyzej, + brak operatora matematycznego) dla wyrazen zespolonych
+	-sprawdza asercje w przypadku zlego wejscia (np. 0+0i) (brak nawiasu z przodu) , 
+		(1+1) (brak i) i.t.p.) dla liczb zespolonych
+	-sprawdza asercje w przypadku zlego wejscia (np. podobnie jak wyzej, + brak operatora matematycznego) 
+		dla wyrazen zespolonych
 	-przy wykonywaniu niektorych testow zostaja wypisane komunikaty "Blad zapisu liczby zespolonej. Sprobuj jeszcze raz."
-		zamierzeniem tej funkcji bylo wypisywanie tego komunikatu dla uzytkownika podczas testu, jesli wpisywal liczbe zespolona w blednym formacie.
-		Funkcja w programie dziala poprawnie, jednak podczas testow wystepuje taki skutek uboczny, co jednak nie problemem w ich realizacjis
+		zamierzeniem tej funkcji bylo wypisywanie tego komunikatu dla uzytkownika podczas testu, 
+		jesli wpisywal liczbe zespolona w blednym formacie.
+		Funkcja w programie dziala poprawnie, jednak podczas testow wystepuje taki skutek uboczny, 
+		co jednak nie problemem w ich realizacjis
 test5.cpp:
 	-sprawdza funkcje liczenia wyrazen zespolonych (dla wszystkich operatorow matematycznych)
 	-sprawdza asercje w przypadku dzielenia przez 0
