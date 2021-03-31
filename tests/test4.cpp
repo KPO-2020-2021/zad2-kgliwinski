@@ -40,7 +40,7 @@ TEST_CASE("Test 3: LZespolona - wyswietlanie standard")
     std::ostringstream out;
 
     out << x;
-    std::cout << out.str() << std::endl;
+ 
     CHECK("(2+2i)" == out.str());
 }
 
@@ -54,7 +54,7 @@ TEST_CASE("Test 4: LZespolona - wyswietlanie zaokraglone")
     std::ostringstream out;
 
     out << x;
-    std::cout << out.str() << std::endl;
+ 
     CHECK("(0.6667+0.6667i)" == out.str()); /*zaokraglenie do 4 miejsca po przecinku*/
 }
 
@@ -187,7 +187,7 @@ TEST_CASE("Test 12: WyrZespolone wyswietlanie standard (+)")
     std::ostringstream out;
 
     out << x;
-    std::cout << out.str() << std::endl;
+
     CHECK("(2+2i)+(3+3i)" == out.str());
 }
 
@@ -205,7 +205,7 @@ TEST_CASE("Test 13: WyrZespolone wyswietlanie standard (-)")
     std::ostringstream out;
 
     out << x;
-    std::cout << out.str() << std::endl;
+
     CHECK("(2+2i)-(3+3i)" == out.str());
 }
 
@@ -223,7 +223,7 @@ TEST_CASE("Test 14: WyrZespolone wyswietlanie standard (*)")
     std::ostringstream out;
 
     out << x;
-    std::cout << out.str() << std::endl;
+
     CHECK("(2+2i)*(3+3i)" == out.str());
 }
 
@@ -241,7 +241,7 @@ TEST_CASE("Test 15: WyrZespolone wyswietlanie standard (/)")
     std::ostringstream out;
 
     out << x;
-    std::cout << out.str() << std::endl;
+ 
     CHECK("(2+2i)/(3+3i)" == out.str());
 }
 
@@ -259,7 +259,7 @@ TEST_CASE("Test 16: WyrZespolone wyswietlanie zaokraglone")
     std::ostringstream out;
 
     out << x;
-    std::cout << out.str() << std::endl;
+
     CHECK("(0.6667+0.6667i)-(0.4286+0.4286i)" == out.str());
 }
 

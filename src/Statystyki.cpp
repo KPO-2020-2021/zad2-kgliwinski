@@ -24,6 +24,7 @@ double statystyki::licz_odp()
 /************************************************************/
 std::ostream &operator<<(std::ostream &stdwyj, statystyki stat)
 {
+
     if (stat.popr + stat.bled == 0)
         stdwyj << "Nie podano żadnych odpowiedzi. Liczba odpowiedzi poprawnych oraz błędnych wynosi 0." << std::endl;    /*w przypadku gdy nie wykonano testow*/
     else
