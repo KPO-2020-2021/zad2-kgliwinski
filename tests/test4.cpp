@@ -4,7 +4,7 @@
 #include "WyrazenieZesp.hh"
 
 /*test4.cpp poswiecony jest sprawdzaniu wczytywania oraz wypiywania LZesp oraz WyrZesp*/
-/*  */
+/* Testy 1-9 sprawdzaja LZesp, a 10-20 WyrZesp */
 
 TEST_CASE("Test 1: LZespolona proste wczytanie")
 {
