@@ -70,5 +70,5 @@ catch (runtime_error& e){
   cout << endl;
   cout << stat; /*wypisanie statystyk (poprzez przeciazony operator dla struktury statystyki)*/
 
- 
+return 0;
   }

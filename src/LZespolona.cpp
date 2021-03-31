@@ -22,7 +22,7 @@ bool LZespolona::operator==(LZespolona Skl2) const
     */
   //alternatywnie, dla MIN_DIFF i wyników od użytkownika
 
-  if (std::abs(re - Skl2.re) <= MIN_DIFF && std::abs(im - Skl2.im) <= MIN_DIFF) //uzyje alternatywnego podejscia aby test2 z dzieleniem przez skalar 2 dzialal
+  if ((abs(re - Skl2.re) <= MIN_DIFF) && (abs(im - Skl2.im) <= MIN_DIFF)) //uzyje alternatywnego podejscia aby test2 z dzieleniem przez skalar 2 dzialal
     return true;
   else
     return false;
