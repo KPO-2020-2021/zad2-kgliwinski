@@ -145,7 +145,7 @@ TEST_CASE ("Test 9: LZespolona roznica malych wartosci"){
 }
 
 
-TEST_CASE ("Test 10: LZespolona suma : zmiany na granicach"){
+TEST_CASE ("Test 10: LZespolona roznica : zmiany na granicach"){
     LZespolona x, y, z;
 
     x.re = 0.00001;

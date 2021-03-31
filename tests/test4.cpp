@@ -112,7 +112,7 @@ TEST_CASE("Test 7: LZespolona wczytanie blednej liczby 3")
     CHECK("Blad zapisu liczby zespolonej. Sprobuj jeszcze raz." == out.str()); /*double wyswietla sie w taki sposob dla malych liczb*/
 }
 
-TEST_CASE("Test 8: LZespolona wczytanie blednej liczby 3")
+TEST_CASE("Test 8: LZespolona wczytanie blednej liczby 4")
 {
     LZespolona x;
 
@@ -130,7 +130,7 @@ TEST_CASE("Test 8: LZespolona wczytanie blednej liczby 3")
     CHECK("Blad zapisu liczby zespolonej. Sprobuj jeszcze raz." == out.str()); /*double wyswietla sie w taki sposob dla malych liczb*/
 }
 
-TEST_CASE("Test 9: LZespolona wczytanie blednej liczby 4")
+TEST_CASE("Test 9: LZespolona wczytanie blednej liczby 5")
 {
     LZespolona x;
 

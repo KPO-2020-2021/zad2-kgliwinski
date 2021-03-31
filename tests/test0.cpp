@@ -2,7 +2,6 @@
 #include "./doctest/doctest.h"
 #include "LZespolona.hh"
 
-
 /*test0.cpp poswiecony jest operatorowi ==*/
 /*wszystkie testy sprawdzaja dzialanie operatora ==*/
 
