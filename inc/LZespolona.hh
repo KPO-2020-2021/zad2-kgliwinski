@@ -17,21 +17,21 @@ struct  LZespolona {
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
 
-LZespolona Sprzezenie();
+LZespolona Sprzezenie() const;
 
-double Modul2();
+double Modul2() const; 
 
-LZespolona  operator - ( LZespolona Skl2);
+LZespolona  operator - ( LZespolona Skl2) const;
 
-LZespolona  operator * (LZespolona Skl2);
+LZespolona  operator * (LZespolona Skl2) const;
 
-LZespolona  operator / (LZespolona Skl2);
+LZespolona  operator / (LZespolona Skl2) const;
 
 bool  operator == (LZespolona Skl2) const ;
 
-LZespolona  operator + (LZespolona  Skl2);
+LZespolona  operator + (LZespolona  Skl2) const;
 
-LZespolona operator / (double Skl2);
+LZespolona operator / (double Skl2) const;
 
 };
 
