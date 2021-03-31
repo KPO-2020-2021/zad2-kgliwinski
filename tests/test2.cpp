@@ -1,9 +1,12 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "./doctest/doctest.h"
 #include "LZespolona.hh"
+
+
 /*test2.cpp poswiecony jest operacjom mnozenia oraz dzielenia*/
-/*testy 1-7 poswiecone sa mnozeniu; testy 8-13 dzieleniu*/
-TEST_CASE("Test LZespolona mnozenie"){
+/*testy 1-7 poswiecone sa mnozeniu; testy 8-14 dzieleniu*/
+
+TEST_CASE("Test 1: LZespolona mnozenie"){
     LZespolona x,y,z;
     
     x.re=3;
@@ -19,7 +22,7 @@ TEST_CASE("Test LZespolona mnozenie"){
 
 }
 
-TEST_CASE("Test LZespolona mnozenie przez 0+0i"){
+TEST_CASE("Test 2: LZespolona mnozenie przez 0+0i"){
     LZespolona x,y,z;
     
     x.re=3;
@@ -35,7 +38,7 @@ TEST_CASE("Test LZespolona mnozenie przez 0+0i"){
 
 }
 
-TEST_CASE("Test LZespolona mnozenie przez 1+0i"){
+TEST_CASE("Test 3: LZespolona mnozenie przez 1+0i"){
     LZespolona x,y,z;
     
     x.re=1;
@@ -51,7 +54,7 @@ TEST_CASE("Test LZespolona mnozenie przez 1+0i"){
 
 }
 
-TEST_CASE("Test LZespolona mnozenie przez 0+1i"){
+TEST_CASE("Test 4: LZespolona mnozenie przez 0+1i"){
     LZespolona x,y,z;
     
     x.re=1;
@@ -67,7 +70,7 @@ TEST_CASE("Test LZespolona mnozenie przez 0+1i"){
 
 }
 
-TEST_CASE("Test LZespolona mnozenie przez 1+1i"){
+TEST_CASE("Test 5: LZespolona mnozenie przez 1+1i"){
     LZespolona x,y,z;
     
     x.re=4;
@@ -83,7 +86,7 @@ TEST_CASE("Test LZespolona mnozenie przez 1+1i"){
 
 }
 
-TEST_CASE("Test LZespolona mnozenie przez -1+0i"){
+TEST_CASE("Test 6: LZespolona mnozenie przez -1+0i"){
     LZespolona x,y,z;
     
     x.re=3;
@@ -99,7 +102,7 @@ TEST_CASE("Test LZespolona mnozenie przez -1+0i"){
 
 }
 
-TEST_CASE("Test LZespolona mnozenie dla malych liczb"){
+TEST_CASE("Test 7: LZespolona mnozenie dla malych liczb"){
     LZespolona x,y,z;
     
     x.re=0.003;
@@ -114,7 +117,7 @@ TEST_CASE("Test LZespolona mnozenie dla malych liczb"){
     CHECK((x*y) == z);
 
 }
-TEST_CASE("Test LZespolona dzielenie przez skalar 1") {
+TEST_CASE("Test 8: LZespolona dzielenie przez skalar 1") {
     LZespolona x, y;
     double t = 2;
     
@@ -127,7 +130,7 @@ TEST_CASE("Test LZespolona dzielenie przez skalar 1") {
     CHECK(x/t == y);
 }
 
-TEST_CASE("Test LZespolona dzielenie przez skalar 2") {
+TEST_CASE("Test 9: LZespolona dzielenie przez skalar 2") {
     LZespolona x, y;
     double t = 3;
     
@@ -140,7 +143,7 @@ TEST_CASE("Test LZespolona dzielenie przez skalar 2") {
     CHECK(x/t == y);
 }
 
-TEST_CASE("Test LZespolona dzielenie przez skalar - zero") {
+TEST_CASE("Test 10: LZespolona dzielenie przez skalar - zero") {
     LZespolona x;
     double t = 0;
     
@@ -150,7 +153,7 @@ TEST_CASE("Test LZespolona dzielenie przez skalar - zero") {
    WARN_THROWS(x/t);
 }
 
-TEST_CASE("Test LZespolona dzielenie przez LZespolona 1") {
+TEST_CASE("Test 11: LZespolona dzielenie przez LZespolona 1") {
     LZespolona x,y,z;
     
     x.re=1;
@@ -166,7 +169,7 @@ TEST_CASE("Test LZespolona dzielenie przez LZespolona 1") {
 
 }
 
-TEST_CASE("Test LZespolona dzielenie przez LZespolona 1") {
+TEST_CASE("Test 12: LZespolona dzielenie przez LZespolona z przyblizeniem") {
     LZespolona x,y,z;
     
     x.re=0;
@@ -181,7 +184,7 @@ TEST_CASE("Test LZespolona dzielenie przez LZespolona 1") {
     CHECK((x/y) == z);
 }
 
-TEST_CASE("Test LZespolona dzielenie przez LZespolona - zero") {
+TEST_CASE("Test 13: LZespolona dzielenie przez LZespolona - zero") {
     LZespolona x, y;
     
     
@@ -193,3 +196,18 @@ TEST_CASE("Test LZespolona dzielenie przez LZespolona - zero") {
  
    WARN_THROWS(x/y);
 }
+
+TEST_CASE("Test 14: LZespolona dzielenie przez skalar z przyblizeniem") {
+    LZespolona x,z;
+    double t;
+    x.re=1;
+    x.im=1;
+
+    t=3;
+
+    z.re=0.3333;
+    z.im=0.3333;
+    
+    CHECK((x/t) == z);
+}
+

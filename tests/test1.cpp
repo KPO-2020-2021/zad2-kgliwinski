@@ -5,7 +5,8 @@
 
 /*test1.cpp poswiecony jest operacjom dodawania i odejmowania liczb zespolonych*/
 /*testy 1-5: dodawaniu; testy 6-10: odejmowaniu*/
-TEST_CASE("test LZespolona Suma"){
+
+TEST_CASE("Test 1: LZespolona Suma"){
     LZespolona x, y, z;
 
     x.re = 1;
@@ -20,7 +21,7 @@ TEST_CASE("test LZespolona Suma"){
     CHECK(x+y == z);
 }
 
-TEST_CASE ("test LZespolona suma wartosci o dziwnym zapisie"){
+TEST_CASE ("Test 2: LZespolona suma wartosci o dziwnym zapisie"){
     LZespolona x, y, z;
 
     x.re = 0.0;
@@ -36,7 +37,7 @@ TEST_CASE ("test LZespolona suma wartosci o dziwnym zapisie"){
 }
 
 
-TEST_CASE ("test LZespolona Suma bardzo male wartosci (ale mieszczace sie w zakresie double)"){
+TEST_CASE ("Test 3: LZespolona Suma bardzo male wartosci (ale mieszczace sie w zakresie double)"){
     LZespolona x, y, z;
 
     x.re = 0.0000000001;
@@ -51,7 +52,7 @@ TEST_CASE ("test LZespolona Suma bardzo male wartosci (ale mieszczace sie w zakr
     CHECK (x+y == z);
 }
 
-TEST_CASE ("test LZespolona Suma malych wartosci"){
+TEST_CASE ("Test 4: LZespolona Suma malych wartosci"){
     LZespolona x, y, z;
 
     x.re = 0.00001;
@@ -67,7 +68,7 @@ TEST_CASE ("test LZespolona Suma malych wartosci"){
 }
 
 
-TEST_CASE ("test LZespolona suma : zmiany na granicach"){
+TEST_CASE ("Test 5: LZespolona suma : zmiany na granicach"){
     LZespolona x, y, z;
 
     x.re = 0.00001;
@@ -82,7 +83,7 @@ TEST_CASE ("test LZespolona suma : zmiany na granicach"){
     CHECK (x+y == z);
 }
 
-TEST_CASE ("test LZespolona roznica"){
+TEST_CASE ("Test 6: LZespolona roznica"){
     LZespolona x, y, z;
 
     x.re = 2;
@@ -97,7 +98,7 @@ TEST_CASE ("test LZespolona roznica"){
     CHECK(x-y == z);
 }
 
-TEST_CASE ("test LZespolona roznica wartosci o dziwnym zapisie"){
+TEST_CASE ("Test 7: LZespolona roznica wartosci o dziwnym zapisie"){
     LZespolona x, y, z;
 
     x.re = 0.00;
@@ -113,7 +114,7 @@ TEST_CASE ("test LZespolona roznica wartosci o dziwnym zapisie"){
 }
 
 
-TEST_CASE ("test LZespolona roznica bardzo male wartosci (ale mieszczace sie w zakresie double)"){
+TEST_CASE ("Test 8: LZespolona roznica bardzo male wartosci (ale mieszczace sie w zakresie double)"){
     LZespolona x, y, z;
 
     x.re = 0.0000000001;
@@ -128,7 +129,7 @@ TEST_CASE ("test LZespolona roznica bardzo male wartosci (ale mieszczace sie w z
     CHECK (x-y == z);
 }
 
-TEST_CASE ("test LZespolona roznica malych wartosci"){
+TEST_CASE ("Test 9: LZespolona roznica malych wartosci"){
     LZespolona x, y, z;
 
     x.re = 0.000025;
@@ -144,7 +145,7 @@ TEST_CASE ("test LZespolona roznica malych wartosci"){
 }
 
 
-TEST_CASE ("test LZespolona suma : zmiany na granicach"){
+TEST_CASE ("Test 10: LZespolona suma : zmiany na granicach"){
     LZespolona x, y, z;
 
     x.re = 0.00001;

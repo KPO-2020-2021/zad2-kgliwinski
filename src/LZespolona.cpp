@@ -166,7 +166,7 @@ LZespolona LZespolona::operator/(LZespolona Skl2)
 std::ostream &operator<<(std::ostream &stdwyj, LZespolona Skl)
 {
   stdwyj.precision(4); /*wypisanie do 4 miejsc po przecinku*/
-  return stdwyj << Skl.re << std::showpos << Skl.im << std::noshowpos << 'i';
+  return stdwyj <<'('<< Skl.re << std::showpos << Skl.im << std::noshowpos << 'i' << ')';
 }
 
 /************************************************************/

@@ -2,10 +2,11 @@
 #include "./doctest/doctest.h"
 #include "LZespolona.hh"
 
+
 /*test0.cpp poswiecony jest operatorowi ==*/
 /*wszystkie testy sprawdzaja dzialanie operatora ==*/
 
-TEST_CASE("Prosta rownosc") {
+TEST_CASE("Test 1: Prosta rownosc") {
     LZespolona x, y;
 
     
@@ -18,7 +19,7 @@ TEST_CASE("Prosta rownosc") {
     CHECK(x == y);
 }
 
-TEST_CASE("Prosta rownosc dla liczb malych (rzedu x*10^-4) z zasiegu MIN_DIFF") {
+TEST_CASE("Test 2: Prosta rownosc dla liczb malych (rzedu x*10^-4) z zasiegu MIN_DIFF") {
     LZespolona x, y;
 
     
@@ -32,7 +33,7 @@ TEST_CASE("Prosta rownosc dla liczb malych (rzedu x*10^-4) z zasiegu MIN_DIFF") 
 }
 
 
-TEST_CASE("Prosta rownosc dla liczb malych (rzedu x*10^-8) spoza zasiegu MIN_DIFF") {
+TEST_CASE("Test 3: Prosta rownosc dla liczb malych (rzedu x*10^-8) spoza zasiegu MIN_DIFF") {
     LZespolona x, y;
 
     
@@ -45,7 +46,7 @@ TEST_CASE("Prosta rownosc dla liczb malych (rzedu x*10^-8) spoza zasiegu MIN_DIF
     CHECK(x == y);
 }
 
-TEST_CASE("Prosta nierownosc") {
+TEST_CASE("Test 4: Prosta nierownosc") {
     LZespolona x, y;
 
     
@@ -58,7 +59,7 @@ TEST_CASE("Prosta nierownosc") {
     CHECK(!(x == y));
 }
 
-TEST_CASE("Minimalna nierownosc (rzedu x*10^-4) z zasiegu MIN_DIFF") {
+TEST_CASE("Test 5: Minimalna nierownosc (rzedu x*10^-4) z zasiegu MIN_DIFF") {
     LZespolona x, y;
 
     
@@ -68,11 +69,11 @@ TEST_CASE("Minimalna nierownosc (rzedu x*10^-4) z zasiegu MIN_DIFF") {
     y.re = 0.0003;          
     y.im = 0.0005;
    
-    CHECK(!(x == y));       /*failure: roznice w liczbach wynosza 0.0001 i sa wystarczajace (MIN_DIFF=0.0001) aby program
+    CHECK((x == y));       /*failure: roznice w liczbach wynosza 0.0001 i sa wystarczajace (MIN_DIFF=0.0001) aby program
                                        uznawał liczby x i y za rowne*/
 }
 
-TEST_CASE("Minimalna nierownosc (rzedu x*10^-5) mniejsza niz MIN_DIFF") {
+TEST_CASE("Test 6: Minimalna nierownosc (rzedu x*10^-5) mniejsza niz MIN_DIFF") {
     LZespolona x, y;
 
     
@@ -82,6 +83,6 @@ TEST_CASE("Minimalna nierownosc (rzedu x*10^-5) mniejsza niz MIN_DIFF") {
     y.re = 0.00003;          
     y.im = 0.00005;
    
-    CHECK(!(x == y));       /*failure: roznice w liczbach wynosza 0.000 1 i sa wystarczajace (MIN_DIFF=0.0001) aby program
+    CHECK((x == y));       /*failure: roznice w liczbach wynosza 0.000 1 i sa wystarczajace (MIN_DIFF=0.0001) aby program
                                        uznawał liczby x i y za rowne*/
 }

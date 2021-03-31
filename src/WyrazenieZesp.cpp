@@ -11,9 +11,9 @@
 /************************************************************/
 std::ostream &operator<<(std::ostream &stdwyj,   WyrazenieZesp WyrZ)
 {
-    stdwyj<<'('<<WyrZ.Arg1.re<<std::showpos<<WyrZ.Arg1.im<<std::noshowpos<<'i'<<')';
+    stdwyj<<WyrZ.Arg1;
     stdwyj<<read_sym(WyrZ.Op);
-    stdwyj<<'('<<WyrZ.Arg2.re<<std::showpos<<WyrZ.Arg2.im<<std::noshowpos<<'i'<<')';
+    stdwyj<<WyrZ.Arg2;
     return stdwyj;
 }
 /************************************************************/
@@ -86,8 +86,13 @@ std::istream &operator>>(std::istream &stdwej, WyrazenieZesp & WyrZ)
 {
     char znak;
 	stdwej >> WyrZ.Arg1;
-	stdwej >> znak;
-	WyrZ.Op = get_sym(znak);
+    if(stdwej.peek()=='+' || stdwej.peek()=='-' || stdwej.peek()=='/' || stdwej.peek()=='*'){
+	    stdwej >> znak;
+	    WyrZ.Op = get_sym(znak);
+    }
+    else{
+        throw std::runtime_error("Bledne wyrazenie zespolone");
+    }
 	stdwej >> WyrZ.Arg2;
 	return stdwej;
 }
