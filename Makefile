@@ -31,19 +31,27 @@ ${OBJ}/WyrazenieZesp.o: ${SRC}/WyrazenieZesp.cpp inc/WyrazenieZesp.hh\
 ${OBJ}/Statystyki.o: ${SRC}/Statystyki.cpp inc/Statystyki.hh
 	g++ -c ${FLAGS} -o ${OBJ}/Statystyki.o ${SRC}/Statystyki.cpp
 
+${TBIN}/test_0: ${TBIN} ${OBJ}/LZespolona.o 
+	g++ -o ${TESTS}/bin/test_0 ${FLAGS} -I${TESTS}/doctest ${TESTS}/test0.cpp ${OBJ}/LZespolona.o
+
 ${TBIN}/test_1: ${TBIN} ${OBJ}/LZespolona.o 
 	g++ -o ${TESTS}/bin/test_1 ${FLAGS} -I${TESTS}/doctest ${TESTS}/test1.cpp ${OBJ}/LZespolona.o
 
 ${TBIN}/test_2: ${TBIN} ${OBJ}/LZespolona.o 
 	g++ -o ${TESTS}/bin/test_2 ${FLAGS} -I${TESTS}/doctest ${TESTS}/test2.cpp ${OBJ}/LZespolona.o
 
+${TBIN}/test_3: ${TBIN} ${OBJ}/LZespolona.o 
+	g++ -o ${TESTS}/bin/test_3 ${FLAGS} -I${TESTS}/doctest ${TESTS}/test3.cpp ${OBJ}/LZespolona.o
+
 
 ${TBIN}:
 	mkdir ${TBIN}
 
-test:  ${TBIN}/test_1 ${TBIN}/test_2
+test:  ${TBIN}/test_0 ${TBIN}/test_1 ${TBIN}/test_2 ${TBIN}/test_3
+	${TBIN}/test_0
 	${TBIN}/test_1 
 	${TBIN}/test_2
+	${TBIN}/test_3
 run:
 	${TRGDIR}/test_arytm_zesp latwy
 
