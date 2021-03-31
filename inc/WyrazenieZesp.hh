@@ -24,21 +24,16 @@ struct WyrazenieZesp {
 
 
   LZespolona Oblicz();
+
+friend std::ostream & operator << (std::ostream & stdwyj,   WyrazenieZesp  WyrZ);  /*przeciazenie operatora wyjscia dla WyrazeniaZesp*/
+
+friend char read_sym(Operator ope);      /*funkcja czytajaca operator*/
+friend Operator get_sym(char ope);       /*funkcja zapisujaca operator*/
+
+friend std::istream & operator >> (std::istream & stdwej, WyrazenieZesp & WyrZ);   /*przeciazenie operatora czytania dla WyrazeniaZesp */
 };
 
 
-/*
- * Funkcje ponizej nalezy zdefiniowac w module.
- *
- */
-
-
-std::ostream & operator << (std::ostream & stdwyj,   WyrazenieZesp  WyrZ);  /*przeciazenie operatora wyjscia dla WyrazeniaZesp*/
-
-char read_sym(Operator ope);      /*funkcja czytajaca operator*/
-Operator get_sym(char ope);       /*funkcja zapisujaca operator*/
-
-std::istream & operator >> (std::istream & stdwej, WyrazenieZesp & WyrZ);   /*przeciazenie operatora czytania dla WyrazeniaZesp */
 
 
 

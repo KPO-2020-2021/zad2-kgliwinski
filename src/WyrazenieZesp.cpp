@@ -2,21 +2,6 @@
 
 
 /************************************************************/
-/* Definiuje w jaki sposob wyswietlac wyrazenia zespolone   */
-/* Argumenty:                                               */
-/*    stdwyj - operator strumienia wyjsciowego              */
-/*    WyrZ - wyswietlane wyrazenie zespolone                */
-/* Zwraca:                                                  */
-/*    wyswietlone odpowienio wyrazenie WyrZ                 */
-/************************************************************/
-std::ostream &operator<<(std::ostream &stdwyj,   WyrazenieZesp WyrZ)
-{
-    stdwyj<<WyrZ.Arg1;
-    stdwyj<<read_sym(WyrZ.Op);
-    stdwyj<<WyrZ.Arg2;
-    return stdwyj;
-}
-/************************************************************/
 /* Definiuje w jaki sposob wczytywac znak do operatora      */
 /* Argumenty:                                               */
 /*    ope - tablica znakow ze znakiem +,-,* lub /           */
@@ -123,4 +108,21 @@ LZespolona WyrazenieZesp::Oblicz(){
 
     }
     return wynik;
+}
+
+
+/************************************************************/
+/* Definiuje w jaki sposob wyswietlac wyrazenia zespolone   */
+/* Argumenty:                                               */
+/*    stdwyj - operator strumienia wyjsciowego              */
+/*    WyrZ - wyswietlane wyrazenie zespolone                */
+/* Zwraca:                                                  */
+/*    wyswietlone odpowienio wyrazenie WyrZ                 */
+/************************************************************/
+std::ostream &operator<<(std::ostream &stdwyj,   WyrazenieZesp WyrZ)
+{
+    stdwyj<<WyrZ.Arg1;
+    stdwyj<<read_sym(WyrZ.Op);
+    stdwyj<<WyrZ.Arg2;
+    return stdwyj;
 }

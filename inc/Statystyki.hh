@@ -12,8 +12,9 @@ double licz_odp();      /*liczenie % poprawnych odpowiedzi*/
 statystyki(){           /*inicjalizacja struktury z domyslnymi wartosciami (zawsze takie sa pozadane)*/
     popr=0; bled=0;
 }
+friend std::ostream & operator << ( std::ostream & stdwyj , statystyki stat);
 };
 
-std::ostream & operator << ( std::ostream & stdwyj , statystyki stat);
+
 
 #endif

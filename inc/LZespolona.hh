@@ -33,15 +33,16 @@ LZespolona  operator + (LZespolona  Skl2) const;
 
 LZespolona operator / (double Skl2) const;
 
+friend std::ostream & operator << ( std::ostream & stdwyj, LZespolona Skl);
+
+friend std::istream & operator >> ( std::istream & stdwej, LZespolona & Skl);
+
+friend void blad_wczyt (std::istream & stdwej);
+
+friend bool czyt_sym (std::istream &stdwej, char znak);
 };
 
-std::ostream & operator << ( std::ostream & stdwyj, LZespolona Skl);
 
-std::istream & operator >> ( std::istream & stdwej, LZespolona & Skl);
-
-void blad_wczyt (std::istream & stdwej);
-
-bool czyt_sym (std::istream &stdwej, char znak);
 
 
 #endif
