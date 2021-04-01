@@ -65,19 +65,23 @@ test0.cpp:
 		i przez to test nie zwraca bledu, a reszta testow moze sie wykonac
 
 test1.cpp:
+
 		-sprawdza dzialanie sumy i roznicy liczb zespolonych
 		-zawiera testy dla przypadkow granicznych, oraz malych wielkosci
 
 test2.cpp:
+
 		-sprawdza dzialanie mnozenia i dzielenia liczb zespolonych oraz dzielenia liczby zespolonej przez skalar
 		-podobnie, zawiera testy dla przypadkow granicznych i malych wielkosci
 		-sprawdza asercje w przypadku dzielenia przez 0
 
 test3.cpp:
+
 		-sprawdza dzialanie sprzezenia i kwadratu modulu dla liczb zespolonych
 		-posiada przypadki graniczne, sprzezenia dla liczby o zerowej czesci urojonej, dla malych liczb
 
 test4.cpp:
+
 		-sprawdza wyswietlanie i wczytywanie liczb i wyrazen zespolonych
 		-obsluguje zaokraglenia (np. dla 2.0/3.0 = 0.667), funkcja wypisujaca zaokragla do 4 miejsca po przecinku
 		-sprawdza dzialanie dla malych liczb
@@ -90,16 +94,20 @@ test4.cpp:
 			jesli wpisywal liczbe zespolona w blednym formacie.
 			Funkcja w programie dziala poprawnie, jednak podczas testow wystepuje taki skutek uboczny, 
 			co jednak nie problemem w ich realizacjis
-	test5.cpp:
+	
+test5.cpp:
+		
 		-sprawdza funkcje liczenia wyrazen zespolonych (dla wszystkich operatorow matematycznych)
 		-sprawdza asercje w przypadku dzielenia przez 0
 		-sprawdza dzialanie dla malych liczb, zaokraglen
 
-	test6.cpp
+test6.cpp
+		
 		-sprawdza funkcje liczenia statystyki oraz przeciazenie operatora wyjscia <<
 		-sprawdza asercje jesli nie podano zadnych odpowiedzi
 
-	test7.cpp
+test7.cpp
+		
 		-sprawdza dodane funkcje w 3 tygodniu zajec (jako dodatkowa modyfikacja programu)
 		-sprawdza dzialanie sumy z przypisaniem (przeciazenia operatora +=) dla LZespolonej
 		-sprawdza dzialanie sumy z przypisaniem (przeciazenia operatora /=) dla LZespolonej
