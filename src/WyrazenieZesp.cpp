@@ -119,7 +119,7 @@ LZespolona WyrazenieZesp::Oblicz(){
 /* Zwraca:                                                  */
 /*    wyswietlone odpowienio wyrazenie WyrZ                 */
 /************************************************************/
-std::ostream &operator<<(std::ostream &stdwyj,   WyrazenieZesp WyrZ)
+std::ostream &operator<<(std::ostream &stdwyj,   WyrazenieZesp const & WyrZ)
 {
     stdwyj<<WyrZ.Arg1;
     stdwyj<<read_sym(WyrZ.Op);

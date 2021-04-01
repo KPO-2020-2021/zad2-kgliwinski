@@ -21,25 +21,27 @@ LZespolona Sprzezenie() const;
 
 double Modul2() const; 
 
-LZespolona  operator - ( LZespolona Skl2) const;
+LZespolona  operator - ( LZespolona const & Skl2) const;
 
-LZespolona  operator * (LZespolona Skl2) const;
+LZespolona  operator * (LZespolona const & Skl2) const;
 
-LZespolona  operator / (LZespolona Skl2) const;
+LZespolona  operator / (LZespolona const & Skl2) const;
 
-bool  operator == (LZespolona Skl2) const ;
+bool  operator == (LZespolona const & Skl2) const ;
 
-LZespolona  operator + (LZespolona  Skl2) const;
+LZespolona  operator + (LZespolona const &  Skl2) const;
 
-LZespolona operator / (double Skl2) const;
+LZespolona operator / (double const & Skl2) const;
 
-friend std::ostream & operator << ( std::ostream & stdwyj, LZespolona Skl);
+friend std::ostream & operator << ( std::ostream & stdwyj, LZespolona const & Skl);
 
 friend std::istream & operator >> ( std::istream & stdwej, LZespolona & Skl);
 
 friend void blad_wczyt (std::istream & stdwej);
 
 friend bool czyt_sym (std::istream &stdwej, char znak);
+
+LZespolona operator += (LZespolona);
 };
 
 

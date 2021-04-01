@@ -25,7 +25,7 @@ struct WyrazenieZesp {
 
   LZespolona Oblicz();
 
-friend std::ostream & operator << (std::ostream & stdwyj,   WyrazenieZesp  WyrZ);  /*przeciazenie operatora wyjscia dla WyrazeniaZesp*/
+friend std::ostream & operator << (std::ostream & stdwyj,   WyrazenieZesp const & WyrZ);  /*przeciazenie operatora wyjscia dla WyrazeniaZesp*/
 
 friend char read_sym(Operator ope);      /*funkcja czytajaca operator*/
 friend Operator get_sym(char ope);       /*funkcja zapisujaca operator*/
