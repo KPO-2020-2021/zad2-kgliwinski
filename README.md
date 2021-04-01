@@ -115,5 +115,6 @@ test7.cpp
 		-sprawdza dzialanie funkcji arg() zwracajacej argument glowny LZespolonej
 
 Wnioski z testow:
+	
 	-jedyna zle dzialajaca funkcja to operator == dla liczb rzedu 10^(-4) co jest spowodowane taka definicja operatora == w LZespolona.cpp
 	-reszta funkcji dziala w pelni poprawnie, zgodnie ze specyfikacja zadania oraz ich przeznaczeniem
