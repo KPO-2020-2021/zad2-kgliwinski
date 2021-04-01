@@ -7,7 +7,6 @@ int main(int argc, char **argv)
 {
   LZespolona pyt_test; /*zmienna do obslugi pytania testowego*/
   statystyki stat;     /*zmienna do zliczania odpowiedzi poprawnych*/
-  
 
   if (argc < 2)
   {
@@ -32,43 +31,48 @@ int main(int argc, char **argv)
 
   WyrazenieZesp WyrZ_PytanieTestowe;
   LZespolona Wynik;
-try{
-  while (PobierzNastpnePytanie(&BazaT, &WyrZ_PytanieTestowe))
+  try
   {
-    cout << "Podaj wynik operacji: " << WyrZ_PytanieTestowe << " =" << endl;
-    cout << "Twoja odpowiedz: ";
-    cin>>pyt_test;
-
-     while (cin.fail())   /*w przypadku blednego czytania liczby (zly format) petla w nieskonczonosc oczekuje az uzytkownik wczyta poprawnie liczbe*/
+    while (PobierzNastpnePytanie(&BazaT, &WyrZ_PytanieTestowe))
     {
- 
-      cin.clear();
-      cin.ignore(10000, '\n');
-      cout << endl<<"Twoja odpowiedz: ";
-      cin>>pyt_test;
-    }
+      cout << "Podaj wynik operacji: " << WyrZ_PytanieTestowe << " =" << endl;
+      cout << "Twoja odpowiedz: ";
+      cin >> pyt_test;
 
-    Wynik = WyrZ_PytanieTestowe.Oblicz(); /*liczenie postawionego wyrazenia zespolonego*/
-    if (pyt_test == Wynik)
-    { /*gdy uzytkownik poda dobra odpowiedz*/
-      cout << "Odpowiedz poprawna" << endl << endl;
-      stat.popr++;  /*zliczanie poprawnych odpowiedzi*/
-    }
-    else
-    { /*gdy uzytkownik poda bledna odpowiedz*/
-      cout << "Blad. Prawidlowym wynikiem jest: " << Wynik << endl << endl;
-      stat.bled++;  /*zliczanie odpowiedzi niepoprawnych*/
+      while (cin.fail()) /*w przypadku blednego czytania liczby (zly format) petla w nieskonczonosc oczekuje az uzytkownik wczyta poprawnie liczbe*/
+      {
+
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << endl
+             << "Twoja odpowiedz: ";
+        cin >> pyt_test;
+      }
+
+      Wynik = WyrZ_PytanieTestowe.Oblicz(); /*liczenie postawionego wyrazenia zespolonego*/
+      if (pyt_test == Wynik)
+      { /*gdy uzytkownik poda dobra odpowiedz*/
+        cout << "Odpowiedz poprawna" << endl
+             << endl;
+        stat.popr++; /*zliczanie poprawnych odpowiedzi*/
+      }
+      else
+      { /*gdy uzytkownik poda bledna odpowiedz*/
+        cout << "Blad. Prawidlowym wynikiem jest: " << Wynik << endl
+             << endl;
+        stat.bled++; /*zliczanie odpowiedzi niepoprawnych*/
+      }
     }
   }
-}
-catch (runtime_error& e){
-  cout<< "Exception occured" << endl;
-    cout<<e.what();
-}
+  catch (runtime_error &e)
+  {
+    cout << "Exception occured" << endl;
+    cout << e.what();
+  }
   cout << endl;
   cout << " Koniec testu" << endl;
   cout << endl;
   cout << stat; /*wypisanie statystyk (poprzez przeciazony operator dla struktury statystyki)*/
 
-return 0;
-  }
+  return 0;
+}

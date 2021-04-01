@@ -41,7 +41,13 @@ friend void blad_wczyt (std::istream & stdwej);
 
 friend bool czyt_sym (std::istream &stdwej, char znak);
 
-LZespolona operator += (LZespolona);
+LZespolona operator += (LZespolona const &Skl2);
+
+LZespolona operator /= (LZespolona const &Skl2);
+
+LZespolona operator /= (double const &Skl2);
+
+double arg() const;
 };
 
 

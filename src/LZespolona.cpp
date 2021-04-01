@@ -76,8 +76,8 @@ LZespolona LZespolona::operator/(double const & Skl2) const
 LZespolona LZespolona::Sprzezenie() const
 {
   LZespolona conjugated;
-  conjugated.re = this->re;
-  conjugated.im = -this->im;
+  conjugated.re = re;
+  conjugated.im = -im;
   return conjugated;
 }
 
@@ -241,4 +241,89 @@ std::istream &operator>>(std::istream &stdwej, LZespolona &Skl)
     return stdwej;
 
   return stdwej;
+}
+
+/************************************************************/
+/* Realizuje dodawanie dwoch liczb zespolonych oraz         */
+/* Przypisanie sumy do pierwszego argumentu (this)          */
+/* Argumenty:                                               */
+/*    Skl1 - pierwszy skladnik dodawania                    */
+/*    Skl2 - drugi skladnik dodawania                       */
+/* Zwraca:                                                  */
+/*    Sume dwoch skladnikow przekazanych jako parametry.    */
+/*    przypisana do pierwszego parametru (this)             */
+/************************************************************/
+LZespolona LZespolona::operator += (LZespolona const &Skl2){
+  this->re+=Skl2.re;
+  this->im+=Skl2.im;
+
+  return *this;
+}
+
+/************************************************************/
+/* Realizuje dzielenie dwoch liczb zespolonych oraz         */
+/* Przypisanie ilorazu do pierwszego argumentu (this)       */
+/* Argumenty:                                               */
+/*    Skl1 - pierwszy skladnik dzielenia                    */
+/*    Skl2 - drugi skladnik dzielenia                       */
+/* Zwraca:                                                  */
+/*    Iloraz dwoch skladnikow przekazanych jako parametry.  */
+/*    przypisana do pierwszego parametru (this)             */
+/************************************************************/
+LZespolona LZespolona::operator /= (LZespolona const &Skl2){
+ double modul2_skl2 = Skl2.Modul2(); //pobranie modulu Skl2
+
+  if (modul2_skl2 != 0)
+  { //Warunek zabezpieczajacy przed dzieleniem przez 0
+    LZespolona Sprzez = Skl2.Sprzezenie(), a;
+    a.re = re;
+    a.im = im;
+    *this = a * Sprzez / modul2_skl2;
+    return *this;
+  }
+  else
+  {
+    throw std::runtime_error("Blad: Proba dzielenia przez 0");
+  }
+
+  return *this;
+}
+
+
+/************************************************************/
+/* Realizuje dzielenie liczby zespolonej przez skalar       */
+/* Przypisanie ilorazu do pierwszego argumentu (this)       */
+/* Argumenty:                                               */
+/*    Skl1 - pierwszy skladnik dzielenia                    */
+/*    Skl2 - drugi skladnik dzielenia                       */
+/* Zwraca:                                                  */
+/*    Iloraz dwoch skladnikow przekazanych jako parametry.  */
+/*    przypisana do pierwszego parametru (this)             */
+/************************************************************/
+LZespolona LZespolona::operator /= (double const &Skl2){
+
+  if (Skl2!=0){
+  this->re /= Skl2;
+  this->im /= Skl2;
+  return *this;
+  }
+  else{   /*Przy dzieleniu przez 0 funkcja wypisuje blad oraz zwraca liczbe zespolona rowna 0*/
+    throw std::runtime_error("Blad: Proba dzielenia przez 0");
+  }
+
+  return *this;
+}
+
+/************************************************************/
+/* Zwraca argument glowny LZespolonej                       */
+/* Argumenty:                                               */
+/*    this - LZespolona ktorej arg chcemy uzyskac           */
+/* Zwraca:                                                  */
+/*    Argument glowny LZespolonej w radianach               */
+/************************************************************/
+double LZespolona::arg() const{
+  double argument;
+  argument = atan2(this->im, this->re);
+
+  return argument;
 }
