@@ -54,8 +54,9 @@ Testy:
 Testy programu (od test0.cpp do test6.cpp) sprawdzaja wymagana funkcjonalnosc programu
 
 test0.cpp:
-	-sprawdza przeciazenie operatora rownosci (==) dla rownosci i nierownosci
-	-sprawdza dla malych liczb dzialanie operatora
+		
+		-sprawdza przeciazenie operatora rownosci (==) dla rownosci i nierownosci
+		-sprawdza dla malych liczb dzialanie operatora
 		
 		*UWAGA* testy 5 i 6 z test0.cpp prezentuja BLEDNE dzialanie operatora 
 		dla liczb mniejszych lub rownych od 0.0001,
